@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dylan Carion - CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #00c6fb;
+            --linkedin: #0077b5;
+            --text: #2c3e50;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        /* Animation de fond */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.02)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            background: var(--white);
+            padding: 3em 2.5em;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 
+                0 25px 50px var(--shadow),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-section {
+            margin-bottom: 2.5em;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            margin: 0 auto 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        h1 {
+            color: var(--text);
+            font-size: 2.2em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            font-weight: 500;
+        }
+
+        .description {
+            color: var(--text);
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 2.5em;
+            text-align: left;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 1.5em;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 2.5em;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            margin-bottom: 2em;
+            padding: 1.5em;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-size: 0.95em;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 0.8em;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1em 2.5em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-linkedin {
+            background: linear-gradient(135deg, var(--linkedin) 0%, #005582 100%);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3);
+        }
+
+        .btn-linkedin:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 119, 181, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 2em 1.5em;
+                max-width: 95vw;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2em;
+            }
+
+            .description {
+                font-size: 1em;
+                padding: 1.2em;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .skills {
+                gap: 6px;
+            }
+
+            .skill-tag {
+                font-size: 0.8em;
+                padding: 5px 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 1.5em 1em;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+                padding: 0.9em 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-section">
+            <div class="avatar">👨‍💻</div>
+            <h1>Dylan Carion</h1>
+            <div class="subtitle">Étudiant BTS SIO - Option SLAM</div>
+        </div>
+
+        <div class="description">
+            <strong>À propos de moi :</strong><br><br>
+            Passionné par l'informatique et le développement web, je suis actuellement étudiant en BTS SIO option SLAM. 
+            Curieux, motivé et rigoureux, j'aime apprendre de nouvelles technologies et relever des défis techniques. 
+            Mon objectif est de devenir développeur full-stack et de contribuer à des projets innovants.
+        </div>
+
+        <div class="skills">
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Git</span>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <span>Rillieux-La-Pape, France</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="document/cv.pdf" class="btn btn-primary" download>
+                📄 Télécharger mon CV
+            </a>
+            <a href="https://linkedin.com/in/dylan-carion-98318a208" class="btn btn-linkedin" target="_blank" rel="noopener noreferrer">
+                🔗 Voir mon LinkedIn
+            </a>
+            <a href="Page.html" class="btn btn-secondary">
+                🏠 Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</body>
+</html>
