@@ -8,6 +8,8 @@
     <meta name="author" content="Dylan Carion">
     <title>Projets & Réalisations - Dylan Carion | Développeur Web Junior</title>
     
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
     <style>
         :root {
             --primary: #2c3e50;
@@ -445,13 +447,20 @@
 <body>
     <header>
         <div class="header-content">
-            <h1 class="header-title">Portfolio de Projets</h1>
-            <p class="header-subtitle">
-                Découvrez mes réalisations techniques et projets de développement web
-            </p>
-            <a href="index.html" class="back-btn">
-                ← Retour au portfolio
-            </a>
+            <div class="header-left">
+                <h1 class="header-title">Portfolio de Projets</h1>
+                <p class="header-subtitle">
+                    Découvrez mes réalisations techniques et projets de développement web
+                </p>
+            </div>
+            <div class="header-right">
+                <div class="header-lang-container">
+                    <!-- Le sélecteur de langue sera inséré ici par JavaScript -->
+                </div>
+                <a href="index.html" class="back-btn">
+                    ← Retour au portfolio
+                </a>
+            </div>
         </div>
     </header>
 

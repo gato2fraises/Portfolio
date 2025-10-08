@@ -5,6 +5,8 @@
     <title>Étude de Recherche - Dynamiques Sectaires | Dylan Carion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projet de recherche académique sur l'analyse des mécanismes sectaires">
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
     <style>
         :root {
             --primary: #667eea;
@@ -619,13 +621,22 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="header-title">
-                <div class="project-icon">🔬</div>
-                <div class="title-text">
-                    <h1>Projet de Recherche Académique</h1>
-                    <div class="subtitle">Analyse des Dynamiques Sectaires - Étude Sociologique</div>
+            <div class="header-left">
+                <div class="header-title">
+                    <div class="project-icon">🔬</div>
+                    <div class="title-text">
+                        <h1>Projet de Recherche Académique</h1>
+                        <div class="subtitle">Analyse des Dynamiques Sectaires - Étude Sociologique</div>
+                    </div>
                 </div>
             </div>
+            <div class="header-right">
+                <div class="header-lang-container">
+                    <!-- Le sélecteur de langue sera inséré ici par JavaScript -->
+                </div>
+                <a href="index.html" class="back-btn">← Retour au portfolio</a>
+            </div>
+        </div>
             <div class="header-actions">
                 <form class="search-bar-header" onsubmit="return handleSearch(event)">
                     <input type="text" placeholder="Rechercher..." name="q">

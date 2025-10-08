@@ -114,30 +114,38 @@ class LanguageManager {
     }
 
     createLanguageSelector() {
-        // Créer le sélecteur de langue
+        // Créer le sélecteur de langue avec un seul bouton
         const langSelector = document.createElement('div');
         langSelector.className = 'language-selector';
+        
+        const currentLangDisplay = this.currentLanguage === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN';
+        const nextLang = this.currentLanguage === 'fr' ? 'en' : 'fr';
+        
         langSelector.innerHTML = `
-            <button class="lang-btn ${this.currentLanguage === 'fr' ? 'active' : ''}" data-lang="fr">
-                🇫🇷 FR
-            </button>
-            <button class="lang-btn ${this.currentLanguage === 'en' ? 'active' : ''}" data-lang="en">
-                🇬🇧 EN
+            <button class="lang-toggle-btn" data-lang="${nextLang}" title="Switch to ${nextLang.toUpperCase()}">
+                ${currentLangDisplay}
             </button>
         `;
 
-        // Ajouter les événements
+        // Ajouter l'événement
         langSelector.addEventListener('click', (e) => {
-            if (e.target.classList.contains('lang-btn')) {
+            if (e.target.classList.contains('lang-toggle-btn')) {
                 const newLang = e.target.dataset.lang;
                 this.switchLanguage(newLang);
             }
         });
 
-        // Insérer dans le header
+        // Insérer dans le header approprié
         const searchArea = document.querySelector('.search-area');
+        const headerLangContainer = document.querySelector('.header-lang-container');
+        
         if (searchArea) {
+            // Page principale avec header complet
             searchArea.insertBefore(langSelector, searchArea.firstChild);
+        } else if (headerLangContainer) {
+            // Pages secondaires avec header simple
+            headerLangContainer.appendChild(langSelector);
+            document.body.classList.add('has-simple-header');
         }
     }
 
@@ -147,10 +155,16 @@ class LanguageManager {
         this.currentLanguage = lang;
         localStorage.setItem('preferred-language', lang);
         
-        // Mettre à jour les boutons
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
+        // Mettre à jour le bouton
+        const toggleBtn = document.querySelector('.lang-toggle-btn');
+        if (toggleBtn) {
+            const currentLangDisplay = lang === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN';
+            const nextLang = lang === 'fr' ? 'en' : 'fr';
+            
+            toggleBtn.textContent = currentLangDisplay;
+            toggleBtn.dataset.lang = nextLang;
+            toggleBtn.title = `Switch to ${nextLang.toUpperCase()}`;
+        }
         
         this.applyLanguage(lang);
         
