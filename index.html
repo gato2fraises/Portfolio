@@ -9,6 +9,7 @@
     <title>Dylan Carion - Développeur Web Junior | Portfolio Professionnel</title>
     
     <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
     <header>
@@ -16,32 +17,32 @@
             <div class="logo">
                 <img src="images/Logo Afip.jpg" alt="Dylan Carion" loading="eager">
                 <div class="logo-text">
-                    <div class="logo-title">Dylan Carion</div>
-                    <div class="logo-subtitle">Portfolio Professionnel</div>
+                    <div class="logo-title" data-i18n="header.title">Dylan Carion</div>
+                    <div class="logo-subtitle" data-i18n="header.subtitle">Portfolio Professionnel</div>
                 </div>
             </div>
 
             <div class="search-area">
                 <form class="search-bar-header" role="search">
-                    <input type="text" placeholder="Rechercher..." autocomplete="off">
-                    <button type="submit" class="search-btn">Rechercher</button>
+                    <input type="text" data-i18n="header.search.placeholder" placeholder="Rechercher..." autocomplete="off">
+                    <button type="submit" class="search-btn" data-i18n="header.search.button">Rechercher</button>
                 </form>
                 <a href="#" onclick="handleLogout(event)">
-                    <button class="logout-btn" id="logoutBtn">Déconnexion</button>
+                    <button class="logout-btn" id="logoutBtn" data-i18n="header.logout">Déconnexion</button>
                 </a>
             </div>
         </div>
         
         <div class="slogan">
-            <h2>Développeur Web Junior - BTS SIO SLAM</h2>
-            <p>Recherche active d'alternance en développement web - Disponible septembre 2025</p>
+            <h2 data-i18n="header.slogan.title">Développeur Web Junior - BTS SIO SLAM</h2>
+            <p data-i18n="header.slogan.subtitle">Recherche active d'alternance en développement web - Disponible septembre 2025</p>
         </div>
     </header>
 
     <main>
         <section class="intro-section">
-            <h1>Dylan Carion - Développeur Web Junior</h1>
-            <p>
+            <h1 data-i18n="home.intro.title">Dylan Carion - Développeur Web Junior</h1>
+            <p data-i18n="home.intro.description">
                 Étudiant en BTS SIO option SLAM, je recherche activement une <strong>alternance en développement web</strong> 
                 pour septembre 2025. Rigoureux, autonome et passionné par les technologies web modernes, 
                 j'apporte motivation et compétences techniques à votre équipe tout en continuant 
@@ -52,14 +53,14 @@
         <section class="cv-section section-card">
             <h2>
                 <div class="section-icon">👨‍💻</div>
-                Profil & Compétences Techniques
+                <span data-i18n="home.cv.title">Profil & Compétences Techniques</span>
             </h2>
             <div class="cv-content">
                 <a class="img-link" href="cv.html">
                     <img src="images/bonhomme.png" alt="Profil Dylan Carion" loading="lazy">
                 </a>
                 <div class="cv-description">
-                    <p>
+                    <p data-i18n="home.cv.description">
                         <strong>Technologies maîtrisées :</strong><br>
                         • <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>
                         • <strong>Backend :</strong> PHP, Python, bases de données MySQL<br>
@@ -67,7 +68,7 @@
                         • <strong>Compétences transversales :</strong> Autonomie, rigueur, travail d'équipe, 
                         gestion de projet, résolution de problèmes
                     </p>
-                    <a href="cv.html" class="cta-button">
+                    <a href="cv.html" class="cta-button" data-i18n="home.cv.button">
                         Consulter mon CV complet
                     </a>
                 </div>
@@ -77,21 +78,21 @@
         <section class="projects-current section-card">
             <h2>
                 <div class="section-icon">💼</div>
-                Réalisations & Portfolio
+                <span data-i18n="home.portfolio.title">Réalisations & Portfolio</span>
             </h2>
             <div class="project-content">
                 <a class="img-link" href="projet.html">
                     <img src="images/Programming_code.jpg" alt="Portfolio projets" loading="lazy">
                 </a>
                 <div class="project-description">
-                    <p>
+                    <p data-i18n="home.portfolio.description">
                         <strong>Portfolio de projets professionnels et académiques</strong><br>
                         Collection complète de mes réalisations : développement de sites web responsives, 
                         applications interactives, projets collaboratifs. Chaque projet démontre ma progression 
                         technique, ma capacité d'adaptation et mon approche méthodologique du développement. 
                         Code structuré, documentation technique complète.
                     </p>
-                    <a href="projet.html" class="cta-button">
+                    <a href="projet.html" class="cta-button" data-i18n="home.portfolio.button">
                         Voir mes réalisations
                     </a>
                 </div>
@@ -101,14 +102,14 @@
         <section class="projects-section section-card">
             <h2>
                 <div class="section-icon">📚</div>
-                Projet de Recherche Académique
+                <span data-i18n="home.research.title">Projet de Recherche Académique</span>
             </h2>
             <div class="secte-content">
                 <a class="img-link" href="page secte.html">
                     <img src="images/secte.jpg" alt="Projet recherche" loading="lazy">
                 </a>
                 <div class="secte-description">
-                    <p>
+                    <p data-i18n="home.research.description">
                         <strong>Étude sociologique - Développement de compétences transversales</strong><br>
                         Projet de recherche universitaire démontrant mes compétences en méthodologie, 
                         analyse critique et rédaction technique. Gestion complète de projet : planification, 
@@ -116,10 +117,10 @@
                         Exemple concret de rigueur intellectuelle et capacité à traiter des sujets complexes.
                     </p>
                     <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid var(--accent);">
-                        <strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • 
-                        Analyse critique • Communication professionnelle
+                        <span data-i18n="home.research.skills"><strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • 
+                        Analyse critique • Communication professionnelle</span>
                     </div>
-                    <a href="page secte.html" class="cta-button">
+                    <a href="page secte.html" class="cta-button" data-i18n="home.research.button">
                         Voir la méthodologie
                     </a>
                 </div>
@@ -129,9 +130,9 @@
         <section class="contact-section section-card">
             <h2>
                 <div class="section-icon">🎯</div>
-                Recherche d'Alternance - Septembre 2025
+                <span data-i18n="home.contact.title">Recherche d'Alternance - Septembre 2025</span>
             </h2>
-            <p>
+            <p data-i18n="home.contact.description">
                 <strong>Objectif professionnel : Contrat d'alternance en développement web</strong><br><br>
                 Étudiant sérieux et motivé, je recherche une entreprise pour un contrat d'alternance 
                 en développement web à partir de septembre 2025. Prêt à m'investir dans vos projets, 
@@ -139,24 +140,24 @@
                 Disponible immédiatement pour entretiens.
             </p>
             <div class="contact-buttons">
-                <a href="cv.html" class="contact-btn">
+                <a href="cv.html" class="contact-btn" data-i18n="home.contact.cv.button">
                     Consulter mon CV
                 </a>
-                <a href="projet.html" class="download-btn">
+                <a href="projet.html" class="download-btn" data-i18n="home.contact.projects.button">
                     Voir mes projets
                 </a>
             </div>
             <div style="margin-top: 20px; text-align: center; padding: 12px; background: rgba(39, 174, 96, 0.1); border-radius: 8px; border: 1px solid rgba(39, 174, 96, 0.2);">
-                <strong style="color: var(--success);">Candidature active</strong><br>
-                <small>Disponible pour entretien • Motivé • Prêt à contribuer</small>
+                <strong style="color: var(--success);" data-i18n="home.contact.status.title">Candidature active</strong><br>
+                <small data-i18n="home.contact.status.subtitle">Disponible pour entretien • Motivé • Prêt à contribuer</small>
             </div>
         </section>
     </main>
 
     <footer>
-        <p><strong>Dylan Carion - Développeur Web Junior - BTS SIO SLAM</strong></p>
-        <p>Recherche alternance développement web - Septembre 2025</p>
-        <p>Portfolio professionnel - Candidature active</p>
+        <p data-i18n="footer.title"><strong>Dylan Carion - Développeur Web Junior - BTS SIO SLAM</strong></p>
+        <p data-i18n="footer.subtitle">Recherche alternance développement web - Septembre 2025</p>
+        <p data-i18n="footer.description">Portfolio professionnel - Candidature active</p>
     </footer>
 
     <script src="script.js"></script>

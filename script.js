@@ -4,7 +4,8 @@ function handleLogout(e) {
     const logoutBtn = document.getElementById('logoutBtn');
     
     // Étape 1: Animation du bouton
-    logoutBtn.textContent = 'Déconnexion...';
+    const loadingText = window.languageManager ? window.languageManager.t('logout.loading') : 'Déconnexion...';
+    logoutBtn.textContent = loadingText;
     logoutBtn.classList.add('loading');
     
     setTimeout(() => {
@@ -12,12 +13,15 @@ function handleLogout(e) {
         const overlay = document.createElement('div');
         overlay.className = 'logout-overlay';
         
+        const titleText = window.languageManager ? window.languageManager.t('logout.title') : 'Déconnexion en cours';
+        const messageText = window.languageManager ? window.languageManager.t('logout.message') : 'Merci d\'avoir consulté mon portfolio professionnel';
+        
         const message = document.createElement('div');
         message.className = 'logout-message';
         message.innerHTML = `
             <div class="logout-icon">👋</div>
-            <div class="logout-title">Déconnexion en cours</div>
-            <div class="logout-text">Merci d'avoir consulté mon portfolio professionnel</div>
+            <div class="logout-title">${titleText}</div>
+            <div class="logout-text">${messageText}</div>
             <div class="logout-progress">
                 <div class="logout-progress-bar"></div>
             </div>
@@ -56,12 +60,14 @@ function handleSearch(e) {
     };
 
     if (pages[query]) {
-        showNotification(`Redirection vers ${query}...`, "success");
+        const redirectText = window.languageManager ? window.languageManager.t('notification.redirect') : 'Redirection vers';
+        showNotification(`${redirectText} ${query}...`, "success");
         setTimeout(() => {
             window.location.href = pages[query];
         }, 800);
     } else {
-        showNotification("Aucune page trouvée.", "error");
+        const notFoundText = window.languageManager ? window.languageManager.t('notification.not.found') : 'Aucune page trouvée.';
+        showNotification(notFoundText, "error");
     }
 }
 
@@ -79,4 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchForm) {
         searchForm.addEventListener('submit', handleSearch);
     }
+    
+    // Exposer languageManager globalement pour les autres fonctions
+    window.languageManager = window.LanguageManager ? new window.LanguageManager() : null;
 });
