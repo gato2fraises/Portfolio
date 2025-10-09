@@ -1,0 +1,10 @@
+/**
+ * Index des thèmes
+ * Import centralisé des variantes de couleurs
+ */
+
+/* Thème clair (défaut) */
+@import './light.css';
+
+/* Thème sombre */
+@import './dark.css';

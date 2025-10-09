@@ -1,0 +1,20 @@
+/**
+ * Thème sombre
+ */
+
+[data-theme="dark"],
+.theme-dark {
+  /* Couleurs de surface */
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-elevated: #334155;
+  
+  /* Couleurs de texte */
+  --color-text: #f1f5f9;
+  --color-text-muted: #cbd5e1;
+  --color-text-light: #94a3b8;
+  
+  /* Couleurs de bordure */
+  --color-border: #334155;
+  --color-border-light: #475569;
+}

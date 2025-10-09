@@ -1,8 +1,9 @@
 {
   "name": "portfolio-dylan-carion",
-  "version": "2.0.0",
-  "description": "Portfolio professionnel moderne avec TypeScript, PWA et fonctionnalités avancées",
+  "version": "3.0.0",
+  "description": "Portfolio professionnel moderne de Dylan Carion - Développeur Web Junior BTS SIO SLAM",
   "type": "module",
+  "main": "src/main.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,16 +13,18 @@
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "lint": "eslint src --ext ts --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts --fix",
     "type-check": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,html}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,html}\"",
-    "prepare": "husky install"
+    "format": "prettier --write \"src/**/*.{ts,css}\" \"*.{html,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,css}\" \"*.{html,json,md}\"",
+    "prepare": "husky install",
+    "clean": "rimraf dist coverage",
+    "analyze": "npx vite-bundle-analyzer"
   },
   "dependencies": {
-    "esbuild": "^0.25.10",
-    "gsap": "^3.12.2"
+    "gsap": "^3.12.2",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",

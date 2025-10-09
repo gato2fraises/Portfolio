@@ -1,167 +1,134 @@
 /**
  * Système de logging pour le portfolio
- * Remplace console.log pour une meilleure gestion des logs en production
  */
 
 export enum LogLevel {
   DEBUG = 0,
   INFO = 1,
   WARN = 2,
-  ERROR = 3,
-  NONE = 4
+  ERROR = 3
 }
 
 export interface LogEntry {
+  timestamp: number;
   level: LogLevel;
   message: string;
-  timestamp: Date;
-  context?: string;
   data?: any;
 }
 
-class Logger {
-  private currentLevel: LogLevel = LogLevel.INFO;
-  private logs: LogEntry[] = [];
-  private maxLogs = 1000;
+/**
+ * Logger simple et efficace pour le développement et le debugging
+ */
+export class Logger {
+  private static currentLevel: LogLevel = LogLevel.INFO;
+  private static logs: LogEntry[] = [];
+  private static maxLogs = 1000;
 
-  constructor() {
-    // En développement, autoriser tous les logs
-    if (typeof window !== 'undefined' && window.__DEV__) {
-      this.currentLevel = LogLevel.DEBUG;
-    }
-    // En production, limiter aux erreurs importantes
-    else {
-      this.currentLevel = LogLevel.WARN;
-    }
-  }
-
-  setLevel(level: LogLevel): void {
+  /**
+   * Définit le niveau de log minimum
+   */
+  static setLevel(level: LogLevel): void {
     this.currentLevel = level;
   }
 
-  private shouldLog(level: LogLevel): boolean {
-    return level >= this.currentLevel;
+  /**
+   * Log de niveau DEBUG
+   */
+  static debug(message: string, ...data: any[]): void {
+    this.log(LogLevel.DEBUG, message, data);
   }
 
-  private addLog(level: LogLevel, message: string, context?: string, data?: any): void {
-    const entry: LogEntry = {
+  /**
+   * Log de niveau INFO
+   */
+  static info(message: string, ...data: any[]): void {
+    this.log(LogLevel.INFO, message, data);
+  }
+
+  /**
+   * Log de niveau WARN
+   */
+  static warn(message: string, ...data: any[]): void {
+    this.log(LogLevel.WARN, message, data);
+  }
+
+  /**
+   * Log de niveau ERROR
+   */
+  static error(message: string, ...data: any[]): void {
+    this.log(LogLevel.ERROR, message, data);
+  }
+
+  /**
+   * Méthode interne de logging
+   */
+  private static log(level: LogLevel, message: string, data: any[]): void {
+    if (level < this.currentLevel) return;
+
+    const timestamp = Date.now();
+    const logEntry: LogEntry = {
+      timestamp,
       level,
       message,
-      timestamp: new Date(),
-      context,
-      data
+      data: data.length > 0 ? data : undefined
     };
 
-    this.logs.push(entry);
-
-    // Limiter le nombre de logs en mémoire
+    // Ajouter à l'historique
+    this.logs.push(logEntry);
     if (this.logs.length > this.maxLogs) {
       this.logs.shift();
     }
 
-    // En développement, afficher dans la console
-    if (typeof window !== 'undefined' && window.__DEV__ && this.shouldLog(level)) {
-      const prefix = context ? `[${context}]` : '';
-      const timestamp = entry.timestamp.toISOString().slice(11, 23);
-
-      switch (level) {
-        case LogLevel.DEBUG:
-          console.debug(`${timestamp} DEBUG ${prefix} ${message}`, data || '');
-          break;
-        case LogLevel.INFO:
-          console.info(`${timestamp} INFO ${prefix} ${message}`, data || '');
-          break;
-        case LogLevel.WARN:
-          console.warn(`${timestamp} WARN ${prefix} ${message}`, data || '');
-          break;
-        case LogLevel.ERROR:
-          console.error(`${timestamp} ERROR ${prefix} ${message}`, data || '');
-          break;
-      }
+    // Afficher dans la console
+    const levelName = LogLevel[level];
+    const timeStr = new Date(timestamp).toLocaleTimeString();
+    
+    const consoleMethod = this.getConsoleMethod(level);
+    const prefix = `[${timeStr}] ${levelName}:`;
+    
+    if (data.length > 0) {
+      consoleMethod(prefix, message, ...data);
+    } else {
+      consoleMethod(prefix, message);
     }
   }
 
-  debug(message: string, context?: string, data?: any): void {
-    this.addLog(LogLevel.DEBUG, message, context, data);
-  }
-
-  info(message: string, context?: string, data?: any): void {
-    this.addLog(LogLevel.INFO, message, context, data);
-  }
-
-  warn(message: string, context?: string, data?: any): void {
-    this.addLog(LogLevel.WARN, message, context, data);
-  }
-
-  error(message: string, context?: string, data?: any): void {
-    this.addLog(LogLevel.ERROR, message, context, data);
-  }
-
-  // Performance logging
-  performance(label: string, startTime: number, context?: string): void {
-    const duration = performance.now() - startTime;
-    this.info(`${label}: ${duration.toFixed(2)}ms`, context || 'PERF');
-  }
-
-  // Event logging
-  event(eventName: string, data?: any, context?: string): void {
-    this.info(`Event: ${eventName}`, context || 'EVENT', data);
-  }
-
-  // Error with stack trace
-  exception(error: Error, context?: string, additionalData?: any): void {
-    this.error(`${error.message}`, context || 'EXCEPTION', {
-      stack: error.stack,
-      name: error.name,
-      ...additionalData
-    });
-  }
-
-  // Get logs for debugging
-  getLogs(level?: LogLevel): LogEntry[] {
-    if (level !== undefined) {
-      return this.logs.filter(log => log.level === level);
+  /**
+   * Obtient la méthode console appropriée selon le niveau
+   */
+  private static getConsoleMethod(level: LogLevel): (...args: any[]) => void {
+    switch (level) {
+      case LogLevel.DEBUG:
+        return console.debug;
+      case LogLevel.INFO:
+        return console.info;
+      case LogLevel.WARN:
+        return console.warn;
+      case LogLevel.ERROR:
+        return console.error;
+      default:
+        return console.log;
     }
+  }
+
+  /**
+   * Obtient tous les logs
+   */
+  static getLogs(): LogEntry[] {
     return [...this.logs];
   }
 
-  // Clear logs
-  clearLogs(): void {
+  /**
+   * Efface l'historique des logs
+   */
+  static clearLogs(): void {
     this.logs = [];
   }
 
-  // Export logs for support
-  exportLogs(): string {
+  /**
+   * Exporte les logs au format JSON
+   */
+  static exportLogs(): string {
     return JSON.stringify(this.logs, null, 2);
   }
 }
-
-// Instance globale
-export const logger = new Logger();
-
-// Raccourcis pour faciliter l'utilisation
-export const log = {
-  debug: (message: string, context?: string, data?: any) => logger.debug(message, context, data),
-  info: (message: string, context?: string, data?: any) => logger.info(message, context, data),
-  warn: (message: string, context?: string, data?: any) => logger.warn(message, context, data),
-  error: (message: string, context?: string, data?: any) => logger.error(message, context, data),
-  perf: (label: string, startTime: number, context?: string) =>
-    logger.performance(label, startTime, context),
-  event: (eventName: string, data?: any, context?: string) =>
-    logger.event(eventName, data, context),
-  exception: (error: Error, context?: string, data?: any) => logger.exception(error, context, data)
-};
-
-// Déclaration globale pour utilisation dans le navigateur
-declare global {
-  interface Window {
-    portfolioLogger: Logger;
-  }
-}
-
-// Exposer le logger globalement en développement
-if (typeof window !== 'undefined') {
-  window.portfolioLogger = logger;
-}
-
-export default logger;

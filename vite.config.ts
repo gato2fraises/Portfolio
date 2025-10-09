@@ -14,26 +14,17 @@ export default defineConfig({
     sourcemap: true,
     minify: 'terser',
     
-    // Configuration Rollup
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        cv: resolve(__dirname, 'cv.html'),
-        contact: resolve(__dirname, 'contact.html'),
-        projet: resolve(__dirname, 'projet.html'),
-        connection: resolve(__dirname, 'connection.html'),
-        easteregg: resolve(__dirname, 'easteregg.html'),
-        sectePage: resolve(__dirname, 'page secte.html')
-      },
-      output: {
-        manualChunks: {
-          vendor: ['gsap'],
-          utils: ['./src/utils/helpers.ts']
-        }
-      }
+  // Configuration Rollup
+  rollupOptions: {
+    input: {
+      main: resolve(__dirname, 'index.html')
     },
-    
-    // Optimisation des chunks
+    output: {
+      manualChunks: {
+        vendor: ['gsap']
+      }
+    }
+  },    // Optimisation des chunks
     chunkSizeWarningLimit: 1000,
     
     // Configuration Terser pour la minification
@@ -106,7 +97,7 @@ export default defineConfig({
   
   // Mode expérimental
   experimental: {
-    renderBuiltUrl(filename) {
+    renderBuiltUrl() {
       return { relative: true };
     }
   }
