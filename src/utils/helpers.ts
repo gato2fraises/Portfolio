@@ -8,7 +8,7 @@ import type {
   ComponentState,
   NotificationType,
   CustomEventMap
-} from '../types/index.js';
+} from '../types/index';
 import { log } from './logger';
 
 /**

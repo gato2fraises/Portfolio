@@ -5,7 +5,7 @@ import type {
   PortfolioConfig,
   Language,
   NotificationType
-} from '../types/index.js';
+} from '../types/index';
 import { log } from '../utils/logger';
 
 /**

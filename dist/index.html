@@ -7,10 +7,24 @@
     <meta name="keywords" content="développeur web, alternance, BTS SIO SLAM, HTML, CSS, JavaScript, Dylan Carion">
     <meta name="author" content="Dylan Carion">
     <title>Dylan Carion - Développeur Web Junior | Portfolio Professionnel</title>
-    
+    
+    <!-- Preconnect pour optimiser les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="/Portfolio/assets/portfolio-enhancer-uOkVa4dN.js" as="script">
+    <link rel="preload" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsSAAALEgHS3X78AAAGPUlEQVR4nO2dPYwWRRzGf3ccnBgvYkQjJEqhxvhRqI3kQuKpEZGY+IEFEmyUaCVIYiEYY6KoHaiVqJXnBwVqjIIWiloANkjhqQlYgAWaYDyNGuREsJh943m3M7v77vf+n18yzfvuzn925rl39maemQEhhBBCCCGEsMRAlIRBBoBtwFYkAnMMAtuBM1F6OfpMGGAIGOe/xu+l16PvRIeZB+xkduP30s7oGtFB5gO78Dd+L+2KrhUd4hxgD8mN30ufRveIDrAA2Ef6xu+lvcC5NZRXFMhC4AD+Rt4fJd/3B6I8RAtZBEzgb9w9uJ/5EeCzwHUTwEUVl13k5BLgMP5G3c3/X/TmAx8Frj8EXJwi7u0JcfOkHRnrwCyXAUfxV+Q7wHDMfcPAu4H7jgCXBuIuBk4E7pcAKuAq4Bj+ShwnPNgzBLwRuP9YFCOOVYH7JIAKuA44jr8CXyHdcO8c4NVAPseBaz3xJYCaWApM4q+8F8g24TMQ3ePLbxK4Iea+FwP3NFIAXRj7HgM+wD9w8yzwJK4S03IG2Aj8CWyO+X4B8AlwB/DFtM83AK8BV2SIFcdjxAtMzGAF4RevTQXE2BzI/wRwWwExZhI3X6EuYAZ3A1P4G2d9gbEeDcQ5CdxVYCyQABJZA5wivkFOA+tKiPlQlHdczFPAfQXGkgACrCPcEGtKjL2WsPAeLCiOBOBhPf6f4ilct1A29xDueh4pIIYEEMMmwi9jKyosy0rCL5+P58xfApjGALAFf2X/DtxYQ7luAv4IlOsZ+jebSgARPeeur5IncYNAdTEK/BpTrl7q13EsATDbuTszHccNv9bN9cDP+MvZj+PYvAB8zt1eCk3K1MHVwI/4y5vVcWxaAPNwU7a+yjyKm/JtGpcDP+AvdxbHsVkBzMeZNXyVeBhn9mgqS4Dv8Zc/rePYpACSnLsTOJtX01kMfIv/OdI4js0JIMm52zZz5gXAQfzPsxf3zD5MCWAh8BX+ytpHuLKaynnAl/QnajMCSOvcbSsjwOeEu7U4x/GOmGvHyy9utSQ5d7uyROts4GOyvdg+EHPd2orKWwlJzt2uLdIcBt4j/K/tdMfxIG4oeRL4BXiKDu1hkNe521bmAm/if+6mDW6VQpJzdzvd3qihX8dxJ1hKeOJkGx36mQswSNg97HMct5ox3LSt76HzTJ22kQHgOfz1UdcUdykkOXfzmifazBP466Vqk0spVOncbSshx/EUxTuOKyPJuVuUgbILVOk4roQk527rHqgC1gL/0IE/mJBzt4xFFF1iFS3vMpOcu2Uso+oaK4G/aNlLc1Odu23lZsKO4y006N/mpjt328oo8BsNHzibg9t4weTQZgUkOY5rHTpPs53KlXUVrkNcA/yEv55rmTxLcu4eIbyhkshGkY7j3CQ5dw/RbOduW1lCMY7jXKRx7mpTxfJIchyXaqHrmnO3reR1HPdFknNXGytXSx7HcWYWAd8Egmlr9XoYwe1QFuqOcy+kseLcbSv9OI5TY82521bSOI4zL6ZNcu7qgKVmMRd4i/CgXGrHcZJzV0esNZM5uF1Kfe2Walg+ybmrQxabzSDwEv72C07MjRF27j6NGr8NDADP42/H2Kl5OXe7R2rH8QrK3/hQ1MNG/O06BSwHN3kTd8Fp3CpV0W4exm/Q/Q7i//qzOHcHcS7gt3F7859fXNlFQdxPvOP4BMw+TvUkcGeGzGcucfoaDRA1kTjH8fvgpm8/xKlhAmdIzEKcb+2WQoosimY5rsufwp2ycmERmcb1LfcWkbGYRe9cwr9xppxGeC8kgGqIO5dwd95MNaTbHkaBs2Z8dmveTCWA9hA3+ZZ7Qk4CMI4EYBwJwDgSgHEkAONIAMaRAIwjARhHAjCOBGAcCcA4EoBxurC650zN8VttldcvgHEkAONIAMaRAIzThZfAOLYC+wvOcxmwoeA8a6erAtiP28CiSIbooADUBRhHAjCOBGAcCcA4EoBxJADjSADGkQCMIwEYRwIwjgRgHAnAOBKAcSQA40gAxpEAjCMBGEcCMI4EYBwJwDgSgHEkAONIAMaRAIwjARhHAjCOBGCcstYGLisx76axuqI4oxXFyYzvXLo6UxknlqxuwHPFpVyoCzCOBGAcCcA4EoBx/gWtmtgixKg8DAAAAABJRU5ErkJggg==" as="image" type="image/png">
+    
+    <!-- Styles dans l'ordre d'importance -->
     <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/analytics.css">
+    
+    <!-- Prefetch pour les pages suivantes -->
+    <link rel="prefetch" href="/Portfolio/assets/cv-DbflnFd4.html">
+    <link rel="prefetch" href="/Portfolio/assets/projet-D6E6hOO8.html">
+    <link rel="prefetch" href="/Portfolio/assets/connection-CrBz9ytR.html">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/Portfolio/assets/manifest-CdqYwpWo.json">
@@ -27,8 +41,9 @@
     <script src="analytics.js"></script>
     <script src="pwa.js"></script>
     <script src="gsap.js"></script>
+    <script src="js/portfolio-enhancer.js"></script>
     <script src="main.js"></script>
-  <link rel="stylesheet" crossorigin href="/Portfolio/assets/main-Cs18bx5n.css">
+  <link rel="stylesheet" crossorigin href="/Portfolio/assets/main-JfZTrHeB.css">
   <link rel="stylesheet" crossorigin href="/Portfolio/assets/styles-CAJLbTeY.css">
 </head>
 <body>
@@ -70,16 +85,17 @@
             </p>
         </section>
 
-        <section class="cv-section section-card">
+        <main id="main-content">
+        <section class="cv-section section-card animate-child">
             <h2>
                 <div class="section-icon">👨‍💻</div>
-                <span data-i18n="home.cv.title">Profil & Compétences Techniques</span>
+                <span data-i18n="home.cv.title" class="typewriter">Profil & Compétences Techniques</span>
             </h2>
             <div class="cv-content">
                 <a class="img-link" href="cv.html">
                     <img src="/Portfolio/assets/bonhomme-BBWvTBv3.png" alt="Profil Dylan Carion" loading="lazy">
                 </a>
-                <div class="cv-description">
+                <div class="cv-description animate-child">
                     <p data-i18n="home.cv.description">
                         <strong>Technologies maîtrisées :</strong><br>
                         • <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>
@@ -95,16 +111,16 @@
             </div>
         </section>
 
-        <section class="projects-current section-card">
+        <section class="projects-current section-card animate-child">
             <h2>
                 <div class="section-icon">💼</div>
                 <span data-i18n="home.portfolio.title">Réalisations & Portfolio</span>
             </h2>
             <div class="project-content">
                 <a class="img-link" href="projet.html">
-                    <img src="/Portfolio/assets/Programming_code-C9XXjey4.jpg" alt="Portfolio projets" loading="lazy">
+                    <img data-src="images/Programming_code.jpg" alt="Portfolio projets" loading="lazy" class="loading-skeleton">
                 </a>
-                <div class="project-description">
+                <div class="project-description animate-child">
                     <p data-i18n="home.portfolio.description">
                         <strong>Portfolio de projets professionnels et académiques</strong><br>
                         Collection complète de mes réalisations : développement de sites web responsives, 
@@ -223,6 +239,7 @@
         <p data-i18n="footer.subtitle">Recherche alternance développement web - Septembre 2025</p>
         <p data-i18n="footer.description">Portfolio professionnel - Candidature active</p>
     </footer>
+    </main>
 
     <!-- Conteneurs pour les nouveaux composants -->
     <div id="notification-container"></div>
@@ -252,6 +269,52 @@
         </a>
     </nav>
 
+    <!-- Scripts d'optimisation et d'amélioration -->
+    <script src="js/image-optimizer.js"></script>
+    <script src="js/portfolio-enhancer.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Initialisation des améliorations -->
+    <script>
+        // Initialisation du portfolio amélioré
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser l'optimiseur d'images
+            if (typeof ImageOptimizer !== 'undefined') {
+                const imageOptimizer = new ImageOptimizer();
+                imageOptimizer.init();
+            }
+            
+            // Initialiser l'enhancer du portfolio
+            if (typeof PortfolioEnhancer !== 'undefined') {
+                const enhancer = new PortfolioEnhancer();
+                enhancer.init();
+            }
+            
+            // Performance monitoring
+            if ('performance' in window) {
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        const perfData = performance.getEntriesByType('navigation')[0];
+                        console.log('Page Load Time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                        
+                        // Core Web Vitals
+                        if ('PerformanceObserver' in window) {
+                            const observer = new PerformanceObserver((list) => {
+                                for (const entry of list.getEntries()) {
+                                    if (entry.name === 'largest-contentful-paint') {
+                                        console.log('LCP:', entry.startTime);
+                                    }
+                                    if (entry.name === 'first-input-delay') {
+                                        console.log('FID:', entry.duration);
+                                    }
+                                }
+                            });
+                            observer.observe({entryTypes: ['largest-contentful-paint', 'first-input']});
+                        }
+                    }, 0);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
