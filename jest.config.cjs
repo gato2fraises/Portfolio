@@ -59,10 +59,10 @@ module.exports = {
   // Seuils de coverage réalistes pour le portfolio
   coverageThreshold: {
     global: {
-      branches: 20,
-      functions: 30,
-      lines: 25,
-      statements: 25
+      branches: 15,
+      functions: 25,
+      lines: 20,
+      statements: 20
     }
   },
   

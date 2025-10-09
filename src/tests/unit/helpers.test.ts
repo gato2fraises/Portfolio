@@ -13,6 +13,19 @@ import {
   ErrorHelper
 } from '../../utils/helpers';
 
+// Mock pour le logger
+jest.mock('../../utils/logger', () => ({
+  log: {
+    debug: jest.fn(),
+    info: jest.fn(),
+    warn: jest.fn(),
+    error: jest.fn(),
+    perf: jest.fn(),
+    event: jest.fn(),
+    exception: jest.fn()
+  }
+}));
+
 // Mock pour localStorage
 const mockStorage = (): Storage => ({
   getItem: jest.fn(() => null),
