@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio professionnel de Dylan Carion - Développeur Web junior spécialisé en BTS SIO SLAM">
+    <meta name="keywords" content="développeur web, alternance, BTS SIO SLAM, HTML, CSS, JavaScript, Dylan Carion">
+    <meta name="author" content="Dylan Carion">
+    <title>Dylan Carion - Développeur Web Junior | Portfolio Professionnel</title>
+    
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/Portfolio/assets/manifest-CdqYwpWo.json">
+    
+    <!-- Meta tags PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dylan Carion Portfolio">
+    <meta name="theme-color" content="#667eea">
+    
+    <script src="i18n.js"></script>
+    <script src="theme.js"></script>
+    <script src="analytics.js"></script>
+    <script src="pwa.js"></script>
+    <script src="gsap.js"></script>
+    <script src="main.js"></script>
+  <link rel="stylesheet" crossorigin href="/Portfolio/assets/main-Cs18bx5n.css">
+  <link rel="stylesheet" crossorigin href="/Portfolio/assets/styles-CAJLbTeY.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/Portfolio/assets/Logo%20Afip-B5sByX_5.jpg" alt="Dylan Carion" loading="eager">
+                <div class="logo-text">
+                    <div class="logo-title" data-i18n="header.title">Dylan Carion</div>
+                    <div class="logo-subtitle" data-i18n="header.subtitle">Portfolio Professionnel</div>
+                </div>
+            </div>
+
+            <div class="search-area">
+                <form class="search-bar-header" role="search">
+                    <input type="text" data-i18n="header.search.placeholder" placeholder="Rechercher..." autocomplete="off">
+                    <button type="submit" class="search-btn" data-i18n="header.search.button">Rechercher</button>
+                </form>
+                <a href="#" onclick="handleLogout(event)">
+                    <button class="logout-btn" id="logoutBtn" data-i18n="header.logout">Déconnexion</button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="slogan">
+            <h2 data-i18n="header.slogan.title">Développeur Web Junior - BTS SIO SLAM</h2>
+            <p data-i18n="header.slogan.subtitle">Recherche active d'alternance en développement web - Disponible septembre 2025</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="intro-section section animate-on-scroll">
+            <h1 class="hero-title" data-i18n="home.intro.title">Dylan Carion - Développeur Web Junior</h1>
+            <p class="hero-subtitle animate-on-load" data-i18n="home.intro.description">
+                Étudiant en BTS SIO option SLAM, je recherche activement une <strong>alternance en développement web</strong> 
+                pour septembre 2025. Rigoureux, autonome et passionné par les technologies web modernes, 
+                j'apporte motivation et compétences techniques à votre équipe tout en continuant 
+                à apprendre et évoluer professionnellement.
+            </p>
+        </section>
+
+        <section class="cv-section section-card">
+            <h2>
+                <div class="section-icon">👨‍💻</div>
+                <span data-i18n="home.cv.title">Profil & Compétences Techniques</span>
+            </h2>
+            <div class="cv-content">
+                <a class="img-link" href="cv.html">
+                    <img src="/Portfolio/assets/bonhomme-BBWvTBv3.png" alt="Profil Dylan Carion" loading="lazy">
+                </a>
+                <div class="cv-description">
+                    <p data-i18n="home.cv.description">
+                        <strong>Technologies maîtrisées :</strong><br>
+                        • <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>
+                        • <strong>Backend :</strong> PHP, Python, bases de données MySQL<br>
+                        • <strong>Outils :</strong> Git/GitHub, VS Code, méthodes Agiles<br>
+                        • <strong>Compétences transversales :</strong> Autonomie, rigueur, travail d'équipe, 
+                        gestion de projet, résolution de problèmes
+                    </p>
+                    <a href="cv.html" class="cta-button" data-i18n="home.cv.button">
+                        Consulter mon CV complet
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-current section-card">
+            <h2>
+                <div class="section-icon">💼</div>
+                <span data-i18n="home.portfolio.title">Réalisations & Portfolio</span>
+            </h2>
+            <div class="project-content">
+                <a class="img-link" href="projet.html">
+                    <img src="/Portfolio/assets/Programming_code-C9XXjey4.jpg" alt="Portfolio projets" loading="lazy">
+                </a>
+                <div class="project-description">
+                    <p data-i18n="home.portfolio.description">
+                        <strong>Portfolio de projets professionnels et académiques</strong><br>
+                        Collection complète de mes réalisations : développement de sites web responsives, 
+                        applications interactives, projets collaboratifs. Chaque projet démontre ma progression 
+                        technique, ma capacité d'adaptation et mon approche méthodologique du développement. 
+                        Code structuré, documentation technique complète.
+                    </p>
+                    <a href="projet.html" class="cta-button" data-i18n="home.portfolio.button">
+                        Voir mes réalisations
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section section-card">
+            <h2>
+                <div class="section-icon">📚</div>
+                <span data-i18n="home.research.title">Projet de Recherche Académique</span>
+            </h2>
+            <div class="secte-content">
+                <a class="img-link" href="page secte.html">
+                    <img src="/Portfolio/assets/secte-B8f8fpSR.jpg" alt="Projet recherche" loading="lazy">
+                </a>
+                <div class="secte-description">
+                    <p data-i18n="home.research.description">
+                        <strong>Étude sociologique - Développement de compétences transversales</strong><br>
+                        Projet de recherche universitaire démontrant mes compétences en méthodologie, 
+                        analyse critique et rédaction technique. Gestion complète de projet : planification, 
+                        recherche documentaire, analyse de données, présentation professionnelle. 
+                        Exemple concret de rigueur intellectuelle et capacité à traiter des sujets complexes.
+                    </p>
+                    <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <span data-i18n="home.research.skills"><strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • 
+                        Analyse critique • Communication professionnelle</span>
+                    </div>
+                    <a href="page secte.html" class="cta-button" data-i18n="home.research.button">
+                        Voir la méthodologie
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Blog -->
+        <section class="blog-preview-section section-card">
+            <h2>
+                <div class="section-icon">📝</div>
+                <span data-i18n="home.blog.title">Blog Technique</span>
+            </h2>
+            <div class="blog-preview-content">
+                <a class="img-link" href="blog.html">
+                    <img src="/Portfolio/assets/Programming_code-C9XXjey4.jpg" alt="Blog technique" loading="lazy">
+                </a>
+                <div class="blog-description">
+                    <p data-i18n="home.blog.description">
+                        <strong>Articles techniques et retours d'expérience</strong><br>
+                        Découvrez mes réflexions sur le développement web, mes tutorials détaillés, 
+                        et mes retours d'expérience sur les technologies modernes. Du JavaScript ES6+ 
+                        aux frameworks CSS, en passant par les bonnes pratiques de développement. 
+                        Une veille technologique active partagée avec la communauté.
+                    </p>
+                    <div class="blog-stats">
+                        <div class="stat-item">
+                            <strong>4</strong>
+                            <span data-i18n="home.blog.stats.articles">Articles</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>3</strong>
+                            <span data-i18n="home.blog.stats.categories">Catégories</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>26</strong>
+                            <span data-i18n="home.blog.stats.readTime">Min lecture</span>
+                        </div>
+                    </div>
+                    <div class="blog-buttons">
+                        <a href="blog.html" class="contact-btn" data-i18n="home.blog.button.main">
+                            Lire le blog
+                        </a>
+                        <a href="blog.html#tutorials" class="download-btn" data-i18n="home.blog.button.tutorials">
+                            Voir les tutorials
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section section-card">
+            <h2>
+                <div class="section-icon">🎯</div>
+                <span data-i18n="home.contact.title">Recherche d'Alternance - Septembre 2025</span>
+            </h2>
+            <p data-i18n="home.contact.description">
+                <strong>Objectif professionnel : Contrat d'alternance en développement web</strong><br><br>
+                Étudiant sérieux et motivé, je recherche une entreprise pour un contrat d'alternance 
+                en développement web à partir de septembre 2025. Prêt à m'investir dans vos projets, 
+                j'apporte créativité, rigueur technique et passion pour l'innovation technologique. 
+                Disponible immédiatement pour entretiens.
+            </p>
+            <div class="contact-buttons hero-buttons animate-on-load">
+                <a href="cv.html" class="contact-btn btn" data-i18n="home.contact.cv.button">
+                    Consulter mon CV
+                </a>
+                <a href="projet.html" class="download-btn btn" data-i18n="home.contact.projects.button">
+                    Voir mes projets
+                </a>
+            </div>
+            <div class="animate-on-load" style="margin-top: 20px; text-align: center; padding: 12px; background: rgba(39, 174, 96, 0.1); border-radius: 8px; border: 1px solid rgba(39, 174, 96, 0.2);">
+                <strong style="color: var(--success);" data-i18n="home.contact.status.title">Candidature active</strong><br>
+                <small data-i18n="home.contact.status.subtitle">Disponible pour entretien • Motivé • Prêt à contribuer</small>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer.title"><strong>Dylan Carion - Développeur Web Junior - BTS SIO SLAM</strong></p>
+        <p data-i18n="footer.subtitle">Recherche alternance développement web - Septembre 2025</p>
+        <p data-i18n="footer.description">Portfolio professionnel - Candidature active</p>
+    </footer>
+
+    <!-- Conteneurs pour les nouveaux composants -->
+    <div id="notification-container"></div>
+    <div class="scroll-progress"></div>
+    <div class="page-loader">
+        <div class="gsap-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <p>Chargement du portfolio...</p>
+    </div>
+
+    <!-- Navigation flottante vers les nouvelles pages -->
+    <nav class="floating-nav">
+        <a href="blog.html" class="nav-item" title="Blog Technique">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Blog</span>
+        </a>
+        <a href="contact.html" class="nav-item" title="Contact">
+            <span class="nav-icon">✉️</span>
+            <span class="nav-label">Contact</span>
+        </a>
+        <a href="#" onclick="window.analytics?.showDashboard()" class="nav-item" title="Analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

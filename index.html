@@ -8,13 +8,34 @@
     <meta name="author" content="Dylan Carion">
     <title>Dylan Carion - Développeur Web Junior | Portfolio Professionnel</title>
     
+    <!-- Preconnect pour optimiser les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="css/modern-enhancements.css" as="style">
+    <link rel="preload" href="css/responsive.css" as="style">
+    <link rel="preload" href="css/performance.css" as="style">
+    <link rel="preload" href="js/portfolio-enhancer.js" as="script">
+    <link rel="preload" href="images/Accueil.png" as="image" type="image/png">
+    
+    <!-- Styles dans l'ordre d'importance -->
+    <link rel="stylesheet" href="css/performance.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/modern-enhancements.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/analytics.css">
     <link rel="stylesheet" href="css/pwa.css">
     <link rel="stylesheet" href="css/gsap.css">
     <link rel="stylesheet" href="css/floating-nav.css">
+    
+    <!-- Prefetch pour les pages suivantes -->
+    <link rel="prefetch" href="cv.html">
+    <link rel="prefetch" href="projet.html">
+    <link rel="prefetch" href="connection.html">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -31,6 +52,7 @@
     <script src="analytics.js"></script>
     <script src="pwa.js"></script>
     <script src="gsap.js"></script>
+    <script src="js/portfolio-enhancer.js"></script>
     <script src="main.js"></script>
 </head>
 <body>
@@ -72,16 +94,17 @@
             </p>
         </section>
 
-        <section class="cv-section section-card">
+        <main id="main-content">
+        <section class="cv-section section-card animate-child">
             <h2>
                 <div class="section-icon">👨‍💻</div>
-                <span data-i18n="home.cv.title">Profil & Compétences Techniques</span>
+                <span data-i18n="home.cv.title" class="typewriter">Profil & Compétences Techniques</span>
             </h2>
             <div class="cv-content">
                 <a class="img-link" href="cv.html">
                     <img src="images/bonhomme.png" alt="Profil Dylan Carion" loading="lazy">
                 </a>
-                <div class="cv-description">
+                <div class="cv-description animate-child">
                     <p data-i18n="home.cv.description">
                         <strong>Technologies maîtrisées :</strong><br>
                         • <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>
@@ -97,16 +120,16 @@
             </div>
         </section>
 
-        <section class="projects-current section-card">
+        <section class="projects-current section-card animate-child">
             <h2>
                 <div class="section-icon">💼</div>
                 <span data-i18n="home.portfolio.title">Réalisations & Portfolio</span>
             </h2>
             <div class="project-content">
                 <a class="img-link" href="projet.html">
-                    <img src="images/Programming_code.jpg" alt="Portfolio projets" loading="lazy">
+                    <img data-src="images/Programming_code.jpg" alt="Portfolio projets" loading="lazy" class="loading-skeleton">
                 </a>
-                <div class="project-description">
+                <div class="project-description animate-child">
                     <p data-i18n="home.portfolio.description">
                         <strong>Portfolio de projets professionnels et académiques</strong><br>
                         Collection complète de mes réalisations : développement de sites web responsives, 
@@ -225,6 +248,7 @@
         <p data-i18n="footer.subtitle">Recherche alternance développement web - Septembre 2025</p>
         <p data-i18n="footer.description">Portfolio professionnel - Candidature active</p>
     </footer>
+    </main>
 
     <!-- Conteneurs pour les nouveaux composants -->
     <div id="notification-container"></div>
@@ -254,6 +278,52 @@
         </a>
     </nav>
 
+    <!-- Scripts d'optimisation et d'amélioration -->
+    <script src="js/image-optimizer.js"></script>
+    <script src="js/portfolio-enhancer.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Initialisation des améliorations -->
+    <script>
+        // Initialisation du portfolio amélioré
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser l'optimiseur d'images
+            if (typeof ImageOptimizer !== 'undefined') {
+                const imageOptimizer = new ImageOptimizer();
+                imageOptimizer.init();
+            }
+            
+            // Initialiser l'enhancer du portfolio
+            if (typeof PortfolioEnhancer !== 'undefined') {
+                const enhancer = new PortfolioEnhancer();
+                enhancer.init();
+            }
+            
+            // Performance monitoring
+            if ('performance' in window) {
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        const perfData = performance.getEntriesByType('navigation')[0];
+                        console.log('Page Load Time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                        
+                        // Core Web Vitals
+                        if ('PerformanceObserver' in window) {
+                            const observer = new PerformanceObserver((list) => {
+                                for (const entry of list.getEntries()) {
+                                    if (entry.name === 'largest-contentful-paint') {
+                                        console.log('LCP:', entry.startTime);
+                                    }
+                                    if (entry.name === 'first-input-delay') {
+                                        console.log('FID:', entry.duration);
+                                    }
+                                }
+                            });
+                            observer.observe({entryTypes: ['largest-contentful-paint', 'first-input']});
+                        }
+                    }, 0);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
