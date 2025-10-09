@@ -26,6 +26,23 @@ Site web portfolio moderne et responsive présentant mes compétences techniques
 - ✅ Cartes interactives avec effets hover professionnels
 - ✅ Système de notifications en temps réel
 
+### 🌐 **Système Multilingue Avancé**
+- ✅ **Support FR/EN complet** sur toutes les pages
+- ✅ **Détection automatique** de la langue du navigateur
+- ✅ **Toggle élégant** avec drapeaux et animations fluides
+- ✅ **Persistance** des préférences utilisateur (localStorage)
+- ✅ **Traductions JSON** structurées et extensibles
+- ✅ **Fallback intelligent** en cas d'erreur de chargement
+
+### 🌓 **Mode Sombre/Clair**
+- ✅ **Toggle thème** avec icônes soleil/lune (🌙/☀️)
+- ✅ **Détection automatique** des préférences système
+- ✅ **Transitions fluides** entre les thèmes (300ms)
+- ✅ **Variables CSS dynamiques** pour cohérence parfaite
+- ✅ **Raccourci clavier** : `Ctrl/Cmd + Shift + T`
+- ✅ **Notifications bilingues** lors du changement
+- ✅ **Optimisation mobile** avec meta theme-color
+
 ### 📱 **Responsive Design**
 - ✅ Adaptation automatique mobile/tablette/desktop
 - ✅ Images optimisées avec chargement paresseux
@@ -35,7 +52,7 @@ Site web portfolio moderne et responsive présentant mes compétences techniques
 ### 🔧 **Fonctionnalités Techniques**
 - ✅ Architecture modulaire (HTML/CSS/JS séparés)
 - ✅ Animations CSS3 fluides et performantes
-- ✅ JavaScript vanilla pour les interactions
+- ✅ JavaScript vanilla ES6+ pour les interactions
 - ✅ Système de routage interne
 - ✅ Gestion d'état et de session utilisateur
 
@@ -50,13 +67,18 @@ Portfolio/
 ├── 📄 easteregg.html      # Jeu JavaScript (Easter Egg)
 ├── 📄 page secte.html     # Projet de recherche académique
 ├── 🎨 styles.css          # Feuilles de style principales
-├── ⚡ script.js           # Scripts JavaScript
+├── ⚡ script.js           # Scripts JavaScript principaux
+├── 🌐 i18n.js             # Système de traduction multilingue
+├── 🌓 theme.js            # Gestionnaire de thèmes sombre/clair
 ├── 🖼️ images/            # Ressources visuelles
 │   ├── Accueil.png
 │   ├── bonhomme.png
 │   ├── Logo Afip.jpg
 │   ├── Programming_code.jpg
 │   └── secte.jpg
+├── 🌍 locales/           # Fichiers de traduction
+│   ├── fr.json           # Traductions françaises
+│   └── en.json           # Traductions anglaises
 ├── 📁 Document/          # Documents téléchargeables
 │   └── cv.pdf
 └── 📋 README.md          # Documentation du projet
@@ -80,11 +102,14 @@ Portfolio/
 - 🔍 **Backdrop-filter** pour les effets de flou
 
 ### **JavaScript Moderne**
-- 🚀 **ES6+ Features** (arrow functions, const/let, modules)
+- 🚀 **ES6+ Features** (arrow functions, const/let, classes)
 - 📡 **DOM Manipulation** avancée
 - 🎭 **Event Handling** sophistiqué
 - 🔄 **Async/Await** pour les animations
 - 📱 **Responsive JavaScript** pour mobile
+- 🌐 **Internationalisation (i18n)** avec JSON
+- 🌓 **Theme Management** avec localStorage
+- 🔧 **Modular Architecture** (classes séparées)
 
 ## 🎯 Sections du Portfolio
 
@@ -117,6 +142,65 @@ Portfolio/
 - Méthodologie et analyse critique
 - Compétences transversales démontrées
 
+## 🆕 Nouvelles Fonctionnalités (Octobre 2025)
+
+### 🌐 **Système Multilingue Complet**
+**Architecture avancée avec support FR/EN sur toutes les pages**
+
+```javascript
+// Exemple d'utilisation
+<h1 data-i18n="home.title">Titre par défaut</h1>
+// Sera automatiquement traduit selon la langue sélectionnée
+```
+
+**Fonctionnalités clés :**
+- 📁 **Fichiers JSON séparés** (`locales/fr.json`, `locales/en.json`)
+- 🔄 **Chargement asynchrone** avec fallback intelligent
+- 🌍 **Détection automatique** de la langue du navigateur
+- 💾 **Persistance** des préférences utilisateur
+- 🎯 **Toggle élégant** avec drapeaux et animations
+
+### 🌓 **Mode Sombre/Clair Avancé**
+**Système de thèmes complet avec transitions fluides**
+
+```css
+/* Variables CSS dynamiques */
+:root { --text-primary: #2c3e50; }
+[data-theme="dark"] { --text-primary: #e9ecef; }
+```
+
+**Fonctionnalités clés :**
+- 🌙 **Bouton toggle** flottant avec icônes soleil/lune
+- ⚡ **Transitions fluides** 300ms sur tous les éléments
+- 🎨 **Variables CSS** pour cohérence parfaite
+- 📱 **Meta theme-color** pour mobile
+- ⌨️ **Raccourci clavier** : `Ctrl/Cmd + Shift + T`
+- 🔔 **Notifications** bilingues lors du changement
+
+### 🎯 **Guide d'Utilisation des Nouvelles Fonctionnalités**
+
+#### 🌐 Changement de Langue
+1. **Clic sur le toggle** FR/EN en haut à droite
+2. **Persistance automatique** de votre choix
+3. **Synchronisation** sur toutes les pages
+
+#### 🌓 Basculement de Thème
+1. **Clic sur l'icône** 🌙/☀️ (bouton rond)
+2. **Raccourci clavier** : `Ctrl+Shift+T`
+3. **Détection automatique** des préférences système
+
+#### 🔧 API JavaScript Avancée
+```javascript
+// Changer la langue programmatiquement
+window.languageManager.setLanguage('en');
+
+// Forcer un thème
+window.themeManager.forceTheme('dark');
+
+// Réinitialiser aux préférences système
+window.themeManager.resetToSystemTheme();
+```
+
 ## 🚀 Installation & Utilisation
 
 ### **Méthode 1 : Accès Direct**
@@ -148,16 +232,20 @@ live-server
 
 ### ⚡ **Optimisations Implémentées**
 - 🖼️ **Images optimisées** avec lazy loading
-- 📦 **CSS/JS minifiés** en production
+- 📦 **Architecture modulaire** CSS/JS
 - 🔄 **Animations CSS** hardware-accelerated
 - 📱 **Mobile-first** responsive design
-- ⚡ **Chargement asynchrone** des ressources
+- ⚡ **Chargement asynchrone** des traductions
+- 🌓 **Transitions fluides** entre thèmes
+- 🌐 **Détection intelligente** des préférences utilisateur
 
 ### 📊 **Métriques de Performance**
 - ✅ **Lighthouse Score** : 90+/100
 - ✅ **Mobile Friendly** : Google Test Passed
 - ✅ **Load Time** : < 2 secondes
-- ✅ **SEO Optimized** : Meta tags complets
+- ✅ **SEO Optimized** : Meta tags multilingues
+- ✅ **Accessibility** : WCAG 2.1 compliant
+- ✅ **Theme Performance** : 300ms transitions
 
 ## 🎨 Design & UX
 
@@ -169,43 +257,57 @@ live-server
 
 ### 🌈 **Palette de Couleurs**
 ```css
+/* Thème Clair */
 --primary: #2c3e50     /* Bleu foncé professionnel */
 --secondary: #34495e   /* Gris-bleu */
 --accent: #3498db      /* Bleu vif */
 --success: #27ae60     /* Vert succès */
---warning: #f39c12     /* Orange attention */
+--bg-primary: #ffffff  /* Arrière-plan principal */
+--text-primary: #2c3e50 /* Texte principal */
+
+/* Thème Sombre */
+--bg-primary: #1a1a1a  /* Arrière-plan sombre */
+--bg-secondary: #2d2d2d /* Arrière-plan secondaire */
+--text-primary: #e9ecef /* Texte clair */
+--text-secondary: #adb5bd /* Texte secondaire */
 ```
 
 ## 🔍 SEO & Accessibilité
 
 ### 📝 **Optimisations SEO**
-- ✅ Meta descriptions personnalisées
+- ✅ Meta descriptions personnalisées et multilingues
 - ✅ Balises Open Graph pour réseaux sociaux
 - ✅ Structure HTML sémantique
 - ✅ URLs descriptives et clean
-- ✅ Sitemap et robots.txt
+- ✅ Support multilingue pour moteurs de recherche
+- ✅ Alternates hreflang pour FR/EN
 
 ### ♿ **Accessibilité**
 - ✅ Contraste de couleurs respecté (WCAG 2.1)
-- ✅ Navigation au clavier
+- ✅ Navigation au clavier complète
 - ✅ Textes alternatifs pour images
 - ✅ Structure heading logique
+- ✅ Support des préférences système (dark mode)
+- ✅ Raccourcis clavier pour power users
 
 ## 🚧 Développement Futur
 
 ### 📋 **Roadmap**
-- [ ] **Version multilingue** (FR/EN)
-- [ ] **Mode sombre/clair** toggle
+- [x] **Version multilingue** (FR/EN) ✅ **COMPLETÉ**
+- [x] **Mode sombre/clair** toggle ✅ **COMPLETÉ**
 - [ ] **Blog technique** intégré
 - [ ] **Formulaire de contact** fonctionnel
 - [ ] **Analytics** et suivi des visites
 - [ ] **PWA** (Progressive Web App)
+- [ ] **Animations avancées** avec GSAP
 
 ### 🔧 **Améliorations Techniques**
 - [ ] Migration vers **TypeScript**
 - [ ] Ajout de **tests automatisés**
 - [ ] **CI/CD pipeline** GitHub Actions
 - [ ] **Compression d'images** automatique
+- [ ] **Service Worker** pour cache offline
+- [ ] **Lazy loading** avancé des composants
 
 ## 👨‍💻 À Propos de l'Auteur
 
