@@ -1,10 +1,10 @@
-import type { 
-  PortfolioManager as IPortfolioManager, 
-  ComponentManager, 
-  ComponentState, 
+import type {
+  PortfolioManager as IPortfolioManager,
+  ComponentManager,
+  ComponentState,
   PortfolioConfig,
   Language,
-  NotificationType 
+  NotificationType
 } from '../types/index.js';
 import { log } from '../utils/logger';
 
@@ -54,34 +54,33 @@ export class PortfolioManager implements IPortfolioManager {
   async init(): Promise<void> {
     try {
       log.info('🚀 Initialisation du Portfolio Avancé (TypeScript)...');
-      
+
       this.state.isLoading = true;
       this.showLoader();
-      
+
       // Attendre que le DOM soit chargé
       await this.waitForDOMReady();
-      
+
       // Exposer la configuration globale
       window.__PORTFOLIO_CONFIG__ = this.config;
       window.__DEV__ = process.env.NODE_ENV === 'development';
       window.__ADMIN_MODE__ = localStorage.getItem('admin_mode') === 'true';
-      
+
       // Initialiser les composants en parallèle
       await this.initializeComponents();
-      
+
       // Configurer les event listeners globaux
       this.setupGlobalEventListeners();
-      
+
       // Masquer le loader et démarrer les animations
       this.hideLoader();
-      
+
       this.state.isInitialized = true;
       this.state.isLoading = false;
       log.info('✅ Portfolio initialisé avec succès (TypeScript)');
-      
+
       // Afficher les stats d'initialisation
       this.showInitStats();
-      
     } catch (error) {
       this.state.hasError = true;
       this.state.errorMessage = error instanceof Error ? error.message : 'Erreur inconnue';
@@ -107,17 +106,17 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private async initializeComponents(): Promise<void> {
     const initPromises: Promise<ComponentManager>[] = [];
-    
+
     // Attendre que les gestionnaires soient disponibles
     initPromises.push(this.waitForComponent('languageManager', 'i18n'));
     initPromises.push(this.waitForComponent('themeManager', 'theme'));
     initPromises.push(this.waitForComponent('analytics', 'analytics'));
     initPromises.push(this.waitForComponent('pwa', 'PWA'));
     initPromises.push(this.waitForComponent('gsapManager', 'GSAP'));
-    
+
     // Attendre que tous les composants soient initialisés
     const results = await Promise.allSettled(initPromises);
-    
+
     // Vérifier les résultats
     results.forEach((result, index) => {
       const componentNames = ['i18n', 'theme', 'analytics', 'PWA', 'GSAP'];
@@ -128,10 +127,10 @@ export class PortfolioManager implements IPortfolioManager {
         log.warn(`⚠️ ${componentNames[index]} non disponible:`, result.reason);
       }
     });
-    
+
     // Initialiser les fonctionnalités spécifiques à la page
     this.initializePageSpecificFeatures();
-    
+
     // Configurer les interactions entre composants
     this.setupComponentInteractions();
   }
@@ -139,7 +138,11 @@ export class PortfolioManager implements IPortfolioManager {
   /**
    * Attend qu'un composant soit disponible
    */
-  private waitForComponent(globalVar: string, name: string, timeout = 5000): Promise<ComponentManager> {
+  private waitForComponent(
+    globalVar: string,
+    name: string,
+    timeout = 5000
+  ): Promise<ComponentManager> {
     return new Promise((resolve, reject) => {
       const checkComponent = (): void => {
         const component = (window as any)[globalVar];
@@ -149,9 +152,9 @@ export class PortfolioManager implements IPortfolioManager {
           setTimeout(checkComponent, 100);
         }
       };
-      
+
       checkComponent();
-      
+
       // Timeout de sécurité
       setTimeout(() => {
         if (!(window as any)[globalVar]) {
@@ -166,7 +169,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private initializePageSpecificFeatures(): void {
     const currentPage = this.getCurrentPage();
-    
+
     switch (currentPage) {
       case 'index':
         this.initializeHomePage();
@@ -260,17 +263,20 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private setupFallbackScrollEffects(): void {
     const elements = document.querySelectorAll('.animate-on-scroll');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement;
-          target.style.opacity = '1';
-          target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-    
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = entry.target as HTMLElement;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     elements.forEach(el => {
       const element = el as HTMLElement;
       element.style.opacity = '0';
@@ -297,7 +303,7 @@ export class PortfolioManager implements IPortfolioManager {
     e.preventDefault();
     const target = e.currentTarget as HTMLAnchorElement;
     const targetId = target.getAttribute('href')?.substring(1);
-    
+
     if (targetId) {
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
@@ -359,7 +365,7 @@ export class PortfolioManager implements IPortfolioManager {
           theme: customEvent.detail.theme
         });
       });
-      
+
       // Tracker les changements de langue
       document.addEventListener('languageChanged', (e: Event) => {
         const customEvent = e as CustomEvent;
@@ -367,7 +373,7 @@ export class PortfolioManager implements IPortfolioManager {
           language: customEvent.detail.language
         });
       });
-      
+
       // Tracker les interactions avec les composants
       document.addEventListener('click', (e: Event) => {
         const target = e.target as HTMLElement;
@@ -404,9 +410,9 @@ export class PortfolioManager implements IPortfolioManager {
       document.addEventListener('languageChanged', (e: CustomEvent) => {
         const newLang: Language = e.detail.language;
         document.documentElement.lang = newLang;
-        
+
         // Notifier les autres composants
-        this.components.forEach((component) => {
+        this.components.forEach(component => {
           if ('updateLanguage' in component) {
             (component as any).updateLanguage(newLang);
           }
@@ -426,7 +432,7 @@ export class PortfolioManager implements IPortfolioManager {
         }
         this.showNotification('Portfolio installé avec succès !', 'success');
       });
-      
+
       document.addEventListener('pwaUpdateAvailable', () => {
         this.showNotification('Mise à jour disponible', 'info');
       });
@@ -448,7 +454,7 @@ export class PortfolioManager implements IPortfolioManager {
         });
       }
     });
-    
+
     // Gestion de la visibilité de la page
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
@@ -457,7 +463,7 @@ export class PortfolioManager implements IPortfolioManager {
         this.resumeAnimations();
       }
     });
-    
+
     // Gestion du redimensionnement
     let resizeTimeout: number;
     window.addEventListener('resize', () => {
@@ -539,12 +545,12 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private showInitStats(): void {
     if (window.__ADMIN_MODE__) {
-      log.info('📊 Statistiques d\'initialisation (TypeScript):');
+      log.info("📊 Statistiques d'initialisation (TypeScript):");
       log.info(`- Composants chargés: ${this.components.size}`);
       log.info(`- Page: ${this.getCurrentPage()}`);
       log.info(`- Thème: ${document.documentElement.dataset.theme || 'light'}`);
       log.info(`- Langue: ${document.documentElement.lang || 'fr'}`);
-      
+
       // Exposer les méthodes d'administration
       window.portfolioManager = this;
       window.getPortfolioStats = () => ({
@@ -562,7 +568,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private handleInitError(error: Error): void {
     log.error(`Erreur critique: ${error.message}`, 'PORTFOLIO', error);
-    
+
     // Afficher un message d'erreur à l'utilisateur
     const errorMessage = document.createElement('div');
     errorMessage.style.cssText = `
@@ -578,10 +584,10 @@ export class PortfolioManager implements IPortfolioManager {
     `;
     errorMessage.textContent = 'Erreur de chargement. Veuillez actualiser la page.';
     document.body.appendChild(errorMessage);
-    
+
     // Masquer le loader même en cas d'erreur
     this.hideLoader();
-    
+
     // Tracker l'erreur si possible
     if (window.analytics) {
       (window.analytics as any).trackEvent?.('init_error', {
@@ -594,7 +600,7 @@ export class PortfolioManager implements IPortfolioManager {
   destroy(): void {
     // Arrêter toutes les animations
     this.pauseAnimations();
-    
+
     // Nettoyer les composants
     this.components.forEach(component => {
       if ('destroy' in component) {
@@ -602,7 +608,7 @@ export class PortfolioManager implements IPortfolioManager {
       }
     });
     this.components.clear();
-    
+
     this.state.isInitialized = false;
     log.info('Portfolio TypeScript détruit');
   }
@@ -617,7 +623,7 @@ export class PortfolioManager implements IPortfolioManager {
   }
 
   getComponent<T extends ComponentManager>(name: string): T | null {
-    return this.components.get(name) as T || null;
+    return (this.components.get(name) as T) || null;
   }
 
   getAllComponents(): Map<string, ComponentManager> {

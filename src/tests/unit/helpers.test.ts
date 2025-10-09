@@ -101,7 +101,9 @@ describe('EventHelper', () => {
 describe('AsyncHelper', () => {
   test('waitFor should resolve when condition becomes true', async () => {
     let condition = false;
-    setTimeout(() => { condition = true; }, 100);
+    setTimeout(() => {
+      condition = true;
+    }, 100);
 
     await expect(AsyncHelper.waitFor(() => condition, 200)).resolves.toBeUndefined();
   });
@@ -132,7 +134,7 @@ describe('AsyncHelper', () => {
     expect(attempts).toBe(3);
   });
 
-  test('debounce should delay function execution', (done) => {
+  test('debounce should delay function execution', done => {
     const mockFn = jest.fn();
     const debouncedFn = AsyncHelper.debounce(mockFn, 100);
 
@@ -148,7 +150,7 @@ describe('AsyncHelper', () => {
     }, 150);
   });
 
-  test('throttle should limit function execution', (done) => {
+  test('throttle should limit function execution', done => {
     const mockFn = jest.fn();
     const throttledFn = AsyncHelper.throttle(mockFn, 100);
 
@@ -197,7 +199,7 @@ describe('DOMHelper', () => {
   test('addClass should add classes to element', () => {
     const element = DOMHelper.safeQuerySelector('#test-element') as HTMLElement;
     DOMHelper.addClass(element, 'new-class', 'another-class');
-    
+
     expect(element.classList.contains('new-class')).toBe(true);
     expect(element.classList.contains('another-class')).toBe(true);
   });
@@ -205,17 +207,17 @@ describe('DOMHelper', () => {
   test('removeClass should remove classes from element', () => {
     const element = DOMHelper.safeQuerySelector('#test-element') as HTMLElement;
     DOMHelper.removeClass(element, 'test-class');
-    
+
     expect(element.classList.contains('test-class')).toBe(false);
   });
 
   test('toggleClass should toggle class on element', () => {
     const element = DOMHelper.safeQuerySelector('#test-element') as HTMLElement;
-    
+
     const result1 = DOMHelper.toggleClass(element, 'active');
     expect(result1).toBe(true);
     expect(element.classList.contains('active')).toBe(true);
-    
+
     const result2 = DOMHelper.toggleClass(element, 'active');
     expect(result2).toBe(false);
     expect(element.classList.contains('active')).toBe(false);
@@ -236,24 +238,21 @@ describe('StorageHelper', () => {
   test('set should store value as JSON', () => {
     const testData = { name: 'test', value: 123 };
     StorageHelper.set('test-key', testData);
-    
-    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
-      'test-key',
-      JSON.stringify(testData)
-    );
+
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith('test-key', JSON.stringify(testData));
   });
 
   test('get should retrieve and parse value', () => {
     const testData = { name: 'test', value: 123 };
     (mockLocalStorage.getItem as jest.Mock).mockReturnValue(JSON.stringify(testData));
-    
+
     const result = StorageHelper.get('test-key', {});
     expect(result).toEqual(testData);
   });
 
   test('get should return default value if key not found', () => {
     (mockLocalStorage.getItem as jest.Mock).mockReturnValue(null);
-    
+
     const defaultValue = { default: true };
     const result = StorageHelper.get('non-existent', defaultValue);
     expect(result).toEqual(defaultValue);
@@ -321,22 +320,22 @@ describe('PerformanceHelper', () => {
     const originalNow = performance.now;
     let mockTime = 1000;
     performance.now = jest.fn(() => mockTime);
-    
+
     PerformanceHelper.startMark('test-operation');
-    
+
     // Simuler du temps
     mockTime = 1100; // 100ms plus tard
     const duration = PerformanceHelper.endMark('test-operation');
-    
+
     expect(duration).toBe(100);
     performance.now = originalNow;
   });
 
   test('measure should measure synchronous function execution', () => {
     const testFn = jest.fn(() => 'result');
-    
+
     const result = PerformanceHelper.measure('test-sync', testFn);
-    
+
     expect(result.result).toBe('result');
     expect(typeof result.duration).toBe('number');
     expect(testFn).toHaveBeenCalled();
@@ -347,9 +346,9 @@ describe('PerformanceHelper', () => {
       await new Promise(resolve => setTimeout(resolve, 10));
       return 'async-result';
     });
-    
+
     const result = await PerformanceHelper.measureAsync('test-async', testFn);
-    
+
     expect(result.result).toBe('async-result');
     expect(typeof result.duration).toBe('number');
     expect(testFn).toHaveBeenCalled();
@@ -359,7 +358,7 @@ describe('PerformanceHelper', () => {
 describe('ErrorHelper', () => {
   test('createError should create error with message and code', () => {
     const error = ErrorHelper.createError('Test error', 'TEST_CODE');
-    
+
     expect(error.message).toBe('Test error');
     expect((error as any).code).toBe('TEST_CODE');
   });
@@ -368,10 +367,10 @@ describe('ErrorHelper', () => {
     const throwingFn = () => {
       throw new Error('Test error');
     };
-    
+
     const safeFn = ErrorHelper.safeHandler(throwingFn);
     const result = safeFn();
-    
+
     expect(result).toBeUndefined();
   });
 
@@ -379,7 +378,7 @@ describe('ErrorHelper', () => {
     const throwingAsyncFn = async () => {
       throw new Error('Async error');
     };
-    
+
     const result = await ErrorHelper.safeAsync(throwingAsyncFn, 'async-fallback');
     expect(result).toBe('async-fallback');
   });

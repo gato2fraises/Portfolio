@@ -230,8 +230,7 @@
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L168'></a><a href='#L168'>168</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -352,10 +351,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -382,7 +377,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -399,7 +396,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">/**
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Système de logging pour le portfolio
  * Remplace console.log pour une meilleure gestion des logs en production
  */
@@ -464,7 +462,7 @@ class Logger {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof window !== 'undefined' &amp;&amp; window.__DEV__ &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >this.shouldLog(level))</span> {
       const prefix = <span class="cstat-no" title="statement not covered" >context ? `[${context}]` : '';</span>
       const timestamp = <span class="cstat-no" title="statement not covered" >entry.timestamp.toISOString().slice(11, 23);</span>
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      switch (level) {</span>
         case LogLevel.DEBUG:
 <span class="cstat-no" title="statement not covered" >          console.debug(`${timestamp} DEBUG ${prefix} ${message}`, data || '');</span>
@@ -511,15 +509,11 @@ class Logger {
 &nbsp;
   // Error with stack trace
 <span class="fstat-no" title="function not covered" >  exception(</span>error: Error, context?: string, additionalData?: any): void {
-<span class="cstat-no" title="statement not covered" >    this.error(</span>
-      `${error.message}`,
-      context || 'EXCEPTION',
-      {
-        stack: error.stack,
-        name: error.name,
-        ...additionalData
-      }
-    );
+<span class="cstat-no" title="statement not covered" >    this.error(`${error.message}`, context || 'EXCEPTION', {</span>
+      stack: error.stack,
+      name: error.name,
+      ...additionalData
+    });
   }
 &nbsp;
   // Get logs for debugging
@@ -550,8 +544,10 @@ export const log = {
   info: <span class="fstat-no" title="function not covered" >(m</span>essage: string, context?: string, data?: any) =&gt; <span class="cstat-no" title="statement not covered" >logger.info(message, context, data),</span>
   warn: <span class="fstat-no" title="function not covered" >(m</span>essage: string, context?: string, data?: any) =&gt; <span class="cstat-no" title="statement not covered" >logger.warn(message, context, data),</span>
   error: (message: string, context?: string, data?: any) =&gt; logger.error(message, context, data),
-  perf: (label: string, startTime: number, context?: string) =&gt; logger.performance(label, startTime, context),
-  event: <span class="fstat-no" title="function not covered" >(e</span>ventName: string, data?: any, context?: string) =&gt; <span class="cstat-no" title="statement not covered" >logger.event(eventName, data, context),</span>
+  perf: (label: string, startTime: number, context?: string) =&gt;
+    logger.performance(label, startTime, context),
+  event: <span class="fstat-no" title="function not covered" >(e</span>ventName: string, data?: any, context?: string) =&gt;
+<span class="cstat-no" title="statement not covered" >    logger.event(eventName, data, context),</span>
   exception: <span class="fstat-no" title="function not covered" >(e</span>rror: Error, context?: string, data?: any) =&gt; <span class="cstat-no" title="statement not covered" >logger.exception(error, context, data)</span>
 };
 &nbsp;
@@ -567,14 +563,15 @@ if (typeof window !== 'undefined') {
   window.portfolioLogger = logger;
 }
 &nbsp;
-export default logger;</pre></td></tr></table></pre>
+export default logger;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-09T09:33:39.235Z
+                at 2025-10-09T09:37:08.681Z
             </div>
         <script src="../prettify.js"></script>
         <script>

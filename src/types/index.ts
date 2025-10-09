@@ -16,10 +16,10 @@ export interface PortfolioConfig {
 
 // Interfaces pour le système d'événements personnalisés
 export interface CustomEventMap {
-  'themeChanged': CustomEvent<{ theme: string }>;
-  'languageChanged': CustomEvent<{ language: Language }>;
-  'pwaInstalled': CustomEvent<{}>;
-  'pwaUpdateAvailable': CustomEvent<{}>;
+  themeChanged: CustomEvent<{ theme: string }>;
+  languageChanged: CustomEvent<{ language: Language }>;
+  pwaInstalled: CustomEvent<{}>;
+  pwaUpdateAvailable: CustomEvent<{}>;
 }
 
 // Extension de Document pour les événements personnalisés
@@ -36,7 +36,7 @@ declare global {
       options?: boolean | EventListenerOptions
     ): void;
   }
-  
+
   interface Window {
     analytics: ComponentManager;
     themeManager: ComponentManager;
@@ -299,22 +299,22 @@ declare global {
     gsapManager: ComponentManager;
     blogManager: ComponentManager;
     contactManager: ComponentManager;
-    
+
     // Fonctions utilitaires
     showNotification: (message: string, type?: NotificationType) => void;
     getPortfolioStats: () => any;
     getPWAInfo: () => any;
     getCacheInfo: () => Promise<any>;
-    
+
     // Variables globales
     __PORTFOLIO_CONFIG__: PortfolioConfig;
     __DEV__: boolean;
     __ADMIN_MODE__: boolean;
   }
-  
+
   // Extensions pour Service Worker
   interface ServiceWorkerGlobalScope {
-    __WB_MANIFEST: Array<{url: string, revision: string}>;
+    __WB_MANIFEST: Array<{ url: string; revision: string }>;
   }
 }
 

@@ -700,7 +700,13 @@
 <a name='L635'></a><a href='#L635'>635</a>
 <a name='L636'></a><a href='#L636'>636</a>
 <a name='L637'></a><a href='#L637'>637</a>
-<a name='L638'></a><a href='#L638'>638</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L638'></a><a href='#L638'>638</a>
+<a name='L639'></a><a href='#L639'>639</a>
+<a name='L640'></a><a href='#L640'>640</a>
+<a name='L641'></a><a href='#L641'>641</a>
+<a name='L642'></a><a href='#L642'>642</a>
+<a name='L643'></a><a href='#L643'>643</a>
+<a name='L644'></a><a href='#L644'>644</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -784,7 +790,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -836,12 +841,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -964,11 +973,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1337,13 +1349,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { 
-  PortfolioManager as IPortfolioManager, 
-  ComponentManager, 
-  ComponentState, 
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type {
+  PortfolioManager as IPortfolioManager,
+  ComponentManager,
+  ComponentState,
   PortfolioConfig,
   Language,
-  NotificationType 
+  NotificationType
 } from '../types/index.js';
 import { log } from '../utils/logger';
 &nbsp;
@@ -1393,34 +1405,33 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="fstat-no" title="function not covered" >  async </span>init(): Promise&lt;void&gt; {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      log.info('🚀 Initialisation du Portfolio Avancé (TypeScript)...');</span>
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      this.state.isLoading = true;</span>
 <span class="cstat-no" title="statement not covered" >      this.showLoader();</span>
-      
+&nbsp;
       // Attendre que le DOM soit chargé
 <span class="cstat-no" title="statement not covered" >      await this.waitForDOMReady();</span>
-      
+&nbsp;
       // Exposer la configuration globale
 <span class="cstat-no" title="statement not covered" >      window.__PORTFOLIO_CONFIG__ = this.config;</span>
 <span class="cstat-no" title="statement not covered" >      window.__DEV__ = process.env.NODE_ENV === 'development';</span>
 <span class="cstat-no" title="statement not covered" >      window.__ADMIN_MODE__ = localStorage.getItem('admin_mode') === 'true';</span>
-      
+&nbsp;
       // Initialiser les composants en parallèle
 <span class="cstat-no" title="statement not covered" >      await this.initializeComponents();</span>
-      
+&nbsp;
       // Configurer les event listeners globaux
 <span class="cstat-no" title="statement not covered" >      this.setupGlobalEventListeners();</span>
-      
+&nbsp;
       // Masquer le loader et démarrer les animations
 <span class="cstat-no" title="statement not covered" >      this.hideLoader();</span>
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      this.state.isInitialized = true;</span>
 <span class="cstat-no" title="statement not covered" >      this.state.isLoading = false;</span>
 <span class="cstat-no" title="statement not covered" >      log.info('✅ Portfolio initialisé avec succès (TypeScript)');</span>
-      
+&nbsp;
       // Afficher les stats d'initialisation
 <span class="cstat-no" title="statement not covered" >      this.showInitStats();</span>
-      
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      this.state.hasError = true;</span>
 <span class="cstat-no" title="statement not covered" >      this.state.errorMessage = error instanceof Error ? error.message : 'Erreur inconnue';</span>
@@ -1446,17 +1457,17 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private <span class="fstat-no" title="function not covered" >async </span>initializeComponents(): Promise&lt;void&gt; {
     const initPromises: Promise&lt;ComponentManager&gt;[] = <span class="cstat-no" title="statement not covered" >[];</span>
-    
+&nbsp;
     // Attendre que les gestionnaires soient disponibles
 <span class="cstat-no" title="statement not covered" >    initPromises.push(this.waitForComponent('languageManager', 'i18n'));</span>
 <span class="cstat-no" title="statement not covered" >    initPromises.push(this.waitForComponent('themeManager', 'theme'));</span>
 <span class="cstat-no" title="statement not covered" >    initPromises.push(this.waitForComponent('analytics', 'analytics'));</span>
 <span class="cstat-no" title="statement not covered" >    initPromises.push(this.waitForComponent('pwa', 'PWA'));</span>
 <span class="cstat-no" title="statement not covered" >    initPromises.push(this.waitForComponent('gsapManager', 'GSAP'));</span>
-    
+&nbsp;
     // Attendre que tous les composants soient initialisés
     const results = <span class="cstat-no" title="statement not covered" >await Promise.allSettled(initPromises);</span>
-    
+&nbsp;
     // Vérifier les résultats
 <span class="cstat-no" title="statement not covered" >    results.forEach(<span class="fstat-no" title="function not covered" >(r</span>esult, index) =&gt; {</span>
       const componentNames = <span class="cstat-no" title="statement not covered" >['i18n', 'theme', 'analytics', 'PWA', 'GSAP'];</span>
@@ -1467,10 +1478,10 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="cstat-no" title="statement not covered" >        log.warn(`⚠️ ${componentNames[index]} non disponible:`, result.reason);</span>
       }
     });
-    
+&nbsp;
     // Initialiser les fonctionnalités spécifiques à la page
 <span class="cstat-no" title="statement not covered" >    this.initializePageSpecificFeatures();</span>
-    
+&nbsp;
     // Configurer les interactions entre composants
 <span class="cstat-no" title="statement not covered" >    this.setupComponentInteractions();</span>
   }
@@ -1478,7 +1489,11 @@ export class PortfolioManager implements IPortfolioManager {
   /**
    * Attend qu'un composant soit disponible
    */
-  private <span class="fstat-no" title="function not covered" >waitForComponent(</span>globalVar: string, name: string, timeout = <span class="branch-0 cbranch-no" title="branch not covered" >5000)</span>: Promise&lt;ComponentManager&gt; {
+  private <span class="fstat-no" title="function not covered" >waitForComponent(</span>
+    globalVar: string,
+    name: string,
+    timeout = <span class="branch-0 cbranch-no" title="branch not covered" >5000</span>
+  ): Promise&lt;ComponentManager&gt; {
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
       const checkComponent = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(): void =</span>&gt; {</span>
         const component = (<span class="cstat-no" title="statement not covered" >window as any)[globalVar];</span>
@@ -1488,9 +1503,9 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="cstat-no" title="statement not covered" >          setTimeout(checkComponent, 100);</span>
         }
       };
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      checkComponent();</span>
-      
+&nbsp;
       // Timeout de sécurité
 <span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!(window as any)[globalVar]) {</span>
@@ -1505,7 +1520,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private <span class="fstat-no" title="function not covered" >initializePageSpecificFeatures(</span>): void {
     const currentPage = <span class="cstat-no" title="statement not covered" >this.getCurrentPage();</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    switch (currentPage) {</span>
       case 'index':
 <span class="cstat-no" title="statement not covered" >        this.initializeHomePage();</span>
@@ -1599,17 +1614,20 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private <span class="fstat-no" title="function not covered" >setupFallbackScrollEffects(</span>): void {
     const elements = <span class="cstat-no" title="statement not covered" >document.querySelectorAll('.animate-on-scroll');</span>
-    
-    const observer = <span class="cstat-no" title="statement not covered" >new IntersectionObserver(<span class="fstat-no" title="function not covered" >(e</span>ntries) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      entries.forEach(<span class="fstat-no" title="function not covered" >entry </span>=&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (entry.isIntersecting) {</span>
-          const target = <span class="cstat-no" title="statement not covered" >entry.target as HTMLElement;</span>
-<span class="cstat-no" title="statement not covered" >          target.style.opacity = '1';</span>
-<span class="cstat-no" title="statement not covered" >          target.style.transform = 'translateY(0)';</span>
-        }
-      });
-    }, { threshold: 0.1 });
-    
+&nbsp;
+    const observer = <span class="cstat-no" title="statement not covered" >new IntersectionObserver(</span>
+<span class="fstat-no" title="function not covered" >      entries </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >        entries.forEach(<span class="fstat-no" title="function not covered" >entry </span>=&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          <span class="missing-if-branch" title="if path not taken" >I</span>if (entry.isIntersecting) {</span>
+            const target = <span class="cstat-no" title="statement not covered" >entry.target as HTMLElement;</span>
+<span class="cstat-no" title="statement not covered" >            target.style.opacity = '1';</span>
+<span class="cstat-no" title="statement not covered" >            target.style.transform = 'translateY(0)';</span>
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    elements.forEach(<span class="fstat-no" title="function not covered" >el </span>=&gt; {</span>
       const element = <span class="cstat-no" title="statement not covered" >el as HTMLElement;</span>
 <span class="cstat-no" title="statement not covered" >      element.style.opacity = '0';</span>
@@ -1636,7 +1654,7 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
     const target = <span class="cstat-no" title="statement not covered" >e.currentTarget as HTMLAnchorElement;</span>
     const targetId = <span class="cstat-no" title="statement not covered" >target.getAttribute('href')?.substring(1);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (targetId) {</span>
       const targetElement = <span class="cstat-no" title="statement not covered" >document.getElementById(targetId);</span>
 <span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if (targetElement) {</span>
@@ -1698,7 +1716,7 @@ export class PortfolioManager implements IPortfolioManager {
           theme: customEvent.detail.theme
         });
       });
-      
+&nbsp;
       // Tracker les changements de langue
 <span class="cstat-no" title="statement not covered" >      document.addEventListener('languageChanged', <span class="fstat-no" title="function not covered" >(e</span>: Event) =&gt; {</span>
         const customEvent = <span class="cstat-no" title="statement not covered" >e as CustomEvent;</span>
@@ -1706,7 +1724,7 @@ export class PortfolioManager implements IPortfolioManager {
           language: customEvent.detail.language
         });
       });
-      
+&nbsp;
       // Tracker les interactions avec les composants
 <span class="cstat-no" title="statement not covered" >      document.addEventListener('click', <span class="fstat-no" title="function not covered" >(e</span>: Event) =&gt; {</span>
         const target = <span class="cstat-no" title="statement not covered" >e.target as HTMLElement;</span>
@@ -1743,9 +1761,9 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="cstat-no" title="statement not covered" >      document.addEventListener('languageChanged', <span class="fstat-no" title="function not covered" >(e</span>: CustomEvent) =&gt; {</span>
         const newLang: Language = <span class="cstat-no" title="statement not covered" >e.detail.language;</span>
 <span class="cstat-no" title="statement not covered" >        document.documentElement.lang = newLang;</span>
-        
+&nbsp;
         // Notifier les autres composants
-<span class="cstat-no" title="statement not covered" >        this.components.forEach(<span class="fstat-no" title="function not covered" >(c</span>omponent) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.components.forEach(<span class="fstat-no" title="function not covered" >component </span>=&gt; {</span>
 <span class="cstat-no" title="statement not covered" >          <span class="missing-if-branch" title="if path not taken" >I</span>if ('updateLanguage' in component) {</span>
             (<span class="cstat-no" title="statement not covered" >component as any).updateLanguage(newLang);</span>
           }
@@ -1765,7 +1783,7 @@ export class PortfolioManager implements IPortfolioManager {
         }
 <span class="cstat-no" title="statement not covered" >        this.showNotification('Portfolio installé avec succès !', 'success');</span>
       });
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      document.addEventListener('pwaUpdateAvailable', <span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        this.showNotification('Mise à jour disponible', 'info');</span>
       });
@@ -1787,7 +1805,7 @@ export class PortfolioManager implements IPortfolioManager {
         });
       }
     });
-    
+&nbsp;
     // Gestion de la visibilité de la page
 <span class="cstat-no" title="statement not covered" >    document.addEventListener('visibilitychange', <span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      if (document.hidden) {</span>
@@ -1796,7 +1814,7 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="cstat-no" title="statement not covered" >        this.resumeAnimations();</span>
       }
     });
-    
+&nbsp;
     // Gestion du redimensionnement
     let resizeTimeout: number;
 <span class="cstat-no" title="statement not covered" >    window.addEventListener('resize', <span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
@@ -1878,12 +1896,12 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private <span class="fstat-no" title="function not covered" >showInitStats(</span>): void {
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (window.__ADMIN_MODE__) {</span>
-<span class="cstat-no" title="statement not covered" >      log.info('📊 Statistiques d\'initialisation (TypeScript):');</span>
+<span class="cstat-no" title="statement not covered" >      log.info("📊 Statistiques d'initialisation (TypeScript):");</span>
 <span class="cstat-no" title="statement not covered" >      log.info(`- Composants chargés: ${this.components.size}`);</span>
 <span class="cstat-no" title="statement not covered" >      log.info(`- Page: ${this.getCurrentPage()}`);</span>
 <span class="cstat-no" title="statement not covered" >      log.info(`- Thème: ${document.documentElement.dataset.theme || 'light'}`);</span>
 <span class="cstat-no" title="statement not covered" >      log.info(`- Langue: ${document.documentElement.lang || 'fr'}`);</span>
-      
+&nbsp;
       // Exposer les méthodes d'administration
 <span class="cstat-no" title="statement not covered" >      window.portfolioManager = this;</span>
 <span class="cstat-no" title="statement not covered" >      window.getPortfolioStats = <span class="fstat-no" title="function not covered" >() =</span>&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
@@ -1901,7 +1919,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private <span class="fstat-no" title="function not covered" >handleInitError(</span>error: Error): void {
 <span class="cstat-no" title="statement not covered" >    log.error(`Erreur critique: ${error.message}`, 'PORTFOLIO', error);</span>
-    
+&nbsp;
     // Afficher un message d'erreur à l'utilisateur
     const errorMessage = <span class="cstat-no" title="statement not covered" >document.createElement('div');</span>
 <span class="cstat-no" title="statement not covered" >    errorMessage.style.cssText = `</span>
@@ -1917,10 +1935,10 @@ export class PortfolioManager implements IPortfolioManager {
     `;
 <span class="cstat-no" title="statement not covered" >    errorMessage.textContent = 'Erreur de chargement. Veuillez actualiser la page.';</span>
 <span class="cstat-no" title="statement not covered" >    document.body.appendChild(errorMessage);</span>
-    
+&nbsp;
     // Masquer le loader même en cas d'erreur
 <span class="cstat-no" title="statement not covered" >    this.hideLoader();</span>
-    
+&nbsp;
     // Tracker l'erreur si possible
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (window.analytics) {</span>
       (<span class="cstat-no" title="statement not covered" >window.analytics as any).trackEvent?.('init_error', {</span>
@@ -1933,7 +1951,7 @@ export class PortfolioManager implements IPortfolioManager {
 <span class="fstat-no" title="function not covered" >  destroy(</span>): void {
     // Arrêter toutes les animations
 <span class="cstat-no" title="statement not covered" >    this.pauseAnimations();</span>
-    
+&nbsp;
     // Nettoyer les composants
 <span class="cstat-no" title="statement not covered" >    this.components.forEach(<span class="fstat-no" title="function not covered" >component </span>=&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      <span class="missing-if-branch" title="if path not taken" >I</span>if ('destroy' in component) {</span>
@@ -1941,7 +1959,7 @@ export class PortfolioManager implements IPortfolioManager {
       }
     });
 <span class="cstat-no" title="statement not covered" >    this.components.clear();</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    this.state.isInitialized = false;</span>
 <span class="cstat-no" title="statement not covered" >    log.info('Portfolio TypeScript détruit');</span>
   }
@@ -1956,7 +1974,7 @@ export class PortfolioManager implements IPortfolioManager {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getComponent&lt;</span>T extends ComponentManager&gt;(name: string): T | null {
-<span class="cstat-no" title="statement not covered" >    return this.components.get(name) as T || null;</span>
+<span class="cstat-no" title="statement not covered" >    return (this.components.get(name) as T) || null;</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  getAllComponents(</span>): Map&lt;string, ComponentManager&gt; {
@@ -1981,7 +1999,7 @@ export class PortfolioManager implements IPortfolioManager {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-09T09:33:39.235Z
+                at 2025-10-09T09:37:08.681Z
             </div>
         <script src="../prettify.js"></script>
         <script>

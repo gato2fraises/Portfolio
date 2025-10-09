@@ -2,12 +2,12 @@
  * Utilitaires TypeScript pour le portfolio
  * Fonctions d'aide et helpers pour TypeScript
  */
-import type { 
-  Language, 
-  Theme, 
-  ComponentState, 
+import type {
+  Language,
+  Theme,
+  ComponentState,
   NotificationType,
-  CustomEventMap 
+  CustomEventMap
 } from '../types/index.js';
 import { log } from './logger';
 
@@ -64,9 +64,9 @@ export class EventHelper {
     const handler = (event: Event) => {
       callback(event as CustomEventMap[K]);
     };
-    
+
     target.addEventListener(eventType, handler);
-    
+
     // Retourne une fonction pour supprimer le listener
     return () => target.removeEventListener(eventType, handler);
   }
@@ -79,14 +79,10 @@ export class AsyncHelper {
   /**
    * Attend qu'une condition soit vraie
    */
-  static async waitFor(
-    condition: () => boolean,
-    timeout = 5000,
-    interval = 100
-  ): Promise<void> {
+  static async waitFor(condition: () => boolean, timeout = 5000, interval = 100): Promise<void> {
     return new Promise((resolve, reject) => {
       const startTime = Date.now();
-      
+
       const check = () => {
         if (condition()) {
           resolve();
@@ -96,7 +92,7 @@ export class AsyncHelper {
           setTimeout(check, interval);
         }
       };
-      
+
       check();
     });
   }
@@ -104,26 +100,22 @@ export class AsyncHelper {
   /**
    * Retry une fonction async avec backoff
    */
-  static async retry<T>(
-    fn: () => Promise<T>,
-    maxRetries = 3,
-    baseDelay = 1000
-  ): Promise<T> {
+  static async retry<T>(fn: () => Promise<T>, maxRetries = 3, baseDelay = 1000): Promise<T> {
     let lastError: Error;
-    
+
     for (let i = 0; i < maxRetries; i++) {
       try {
         return await fn();
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
-        
+
         if (i < maxRetries - 1) {
           const delay = baseDelay * Math.pow(2, i);
           await this.delay(delay);
         }
       }
     }
-    
+
     throw lastError!;
   }
 
@@ -142,7 +134,7 @@ export class AsyncHelper {
     wait: number
   ): (...args: Parameters<T>) => void {
     let timeout: number;
-    
+
     return (...args: Parameters<T>) => {
       clearTimeout(timeout);
       timeout = window.setTimeout(() => func(...args), wait);
@@ -157,12 +149,12 @@ export class AsyncHelper {
     wait: number
   ): (...args: Parameters<T>) => void {
     let inThrottle: boolean;
-    
+
     return (...args: Parameters<T>) => {
       if (!inThrottle) {
         func(...args);
         inThrottle = true;
-        setTimeout(() => inThrottle = false, wait);
+        setTimeout(() => (inThrottle = false), wait);
       }
     };
   }
@@ -208,10 +200,7 @@ export class DOMHelper {
   /**
    * Attend qu'un élément apparaisse dans le DOM
    */
-  static async waitForElement(
-    selector: string,
-    timeout = 5000
-  ): Promise<HTMLElement> {
+  static async waitForElement(selector: string, timeout = 5000): Promise<HTMLElement> {
     return new Promise((resolve, reject) => {
       const element = document.querySelector(selector) as HTMLElement;
       if (element) {
@@ -343,7 +332,7 @@ export class PerformanceHelper {
       log.warn(`Mark '${name}' not found`, 'PERF');
       return 0;
     }
-    
+
     const duration = performance.now() - start;
     this.marks.delete(name);
     return duration;
@@ -359,25 +348,22 @@ export class PerformanceHelper {
     this.startMark(name);
     const result = await fn();
     const duration = this.endMark(name);
-    
+
     log.perf(name, performance.now() - duration, 'ASYNC');
-    
+
     return { result, duration };
   }
 
   /**
    * Mesure l'exécution d'une fonction synchrone
    */
-  static measure<T>(
-    name: string,
-    fn: () => T
-  ): { result: T; duration: number } {
+  static measure<T>(name: string, fn: () => T): { result: T; duration: number } {
     this.startMark(name);
     const result = fn();
     const duration = this.endMark(name);
-    
+
     log.perf(name, performance.now() - duration, 'SYNC');
-    
+
     return { result, duration };
   }
 }
@@ -430,10 +416,7 @@ export class ValidationHelper {
   /**
    * Combine plusieurs validateurs
    */
-  static validate(
-    value: string,
-    validators: Array<(val: string) => boolean>
-  ): boolean {
+  static validate(value: string, validators: Array<(val: string) => boolean>): boolean {
     return validators.every(validator => validator(value));
   }
 }
@@ -473,10 +456,7 @@ export class ErrorHelper {
   /**
    * Wrapper async avec gestion d'erreur
    */
-  static async safeAsync<T>(
-    fn: () => Promise<T>,
-    fallback?: T
-  ): Promise<T | undefined> {
+  static async safeAsync<T>(fn: () => Promise<T>, fallback?: T): Promise<T | undefined> {
     try {
       return await fn();
     } catch (error) {

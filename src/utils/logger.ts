@@ -63,7 +63,7 @@ class Logger {
     if (typeof window !== 'undefined' && window.__DEV__ && this.shouldLog(level)) {
       const prefix = context ? `[${context}]` : '';
       const timestamp = entry.timestamp.toISOString().slice(11, 23);
-      
+
       switch (level) {
         case LogLevel.DEBUG:
           console.debug(`${timestamp} DEBUG ${prefix} ${message}`, data || '');
@@ -110,15 +110,11 @@ class Logger {
 
   // Error with stack trace
   exception(error: Error, context?: string, additionalData?: any): void {
-    this.error(
-      `${error.message}`,
-      context || 'EXCEPTION',
-      {
-        stack: error.stack,
-        name: error.name,
-        ...additionalData
-      }
-    );
+    this.error(`${error.message}`, context || 'EXCEPTION', {
+      stack: error.stack,
+      name: error.name,
+      ...additionalData
+    });
   }
 
   // Get logs for debugging
@@ -149,8 +145,10 @@ export const log = {
   info: (message: string, context?: string, data?: any) => logger.info(message, context, data),
   warn: (message: string, context?: string, data?: any) => logger.warn(message, context, data),
   error: (message: string, context?: string, data?: any) => logger.error(message, context, data),
-  perf: (label: string, startTime: number, context?: string) => logger.performance(label, startTime, context),
-  event: (eventName: string, data?: any, context?: string) => logger.event(eventName, data, context),
+  perf: (label: string, startTime: number, context?: string) =>
+    logger.performance(label, startTime, context),
+  event: (eventName: string, data?: any, context?: string) =>
+    logger.event(eventName, data, context),
   exception: (error: Error, context?: string, data?: any) => logger.exception(error, context, data)
 };
 

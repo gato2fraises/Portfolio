@@ -122,11 +122,11 @@ jest.setTimeout(10000);
 afterEach(() => {
   // Reset des mocks
   jest.clearAllMocks();
-  
+
   // Reset du DOM
   document.body.innerHTML = '';
   document.head.innerHTML = '';
-  
+
   // Reset des variables globales
   delete (window as any).__PORTFOLIO_CONFIG__;
   delete (window as any).__DEV__;
