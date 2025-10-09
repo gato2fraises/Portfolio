@@ -6,7 +6,7 @@ import type {
   Language,
   NotificationType 
 } from '../types/index.js';
-import { log } from '../utils/logger.js';
+import { log } from '../utils/logger';
 
 /**
  * Gestionnaire principal du portfolio avancé en TypeScript
@@ -43,7 +43,7 @@ export class PortfolioManager implements IPortfolioManager {
 
   constructor() {
     this.init().catch(error => {
-      log.error('❌ Erreur initialisation portfolio:', error);
+      log.error(`❌ Erreur initialisation portfolio: ${error.message}`, 'PORTFOLIO', error);
       this.handleInitError(error);
     });
   }
@@ -439,7 +439,7 @@ export class PortfolioManager implements IPortfolioManager {
   private setupGlobalEventListeners(): void {
     // Gestion des erreurs globales
     window.addEventListener('error', (e: ErrorEvent) => {
-      log.error('Erreur JavaScript:', e.error);
+      log.error(`Erreur JavaScript: ${e.message}`, 'JS_ERROR', e.error);
       if (window.analytics) {
         (window.analytics as any).trackEvent?.('javascript_error', {
           message: e.message,
@@ -561,7 +561,7 @@ export class PortfolioManager implements IPortfolioManager {
    * Gère les erreurs d'initialisation
    */
   private handleInitError(error: Error): void {
-    log.error('Erreur critique:', error);
+    log.error(`Erreur critique: ${error.message}`, 'PORTFOLIO', error);
     
     // Afficher un message d'erreur à l'utilisateur
     const errorMessage = document.createElement('div');

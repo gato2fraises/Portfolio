@@ -9,7 +9,7 @@ import type {
   NotificationType,
   CustomEventMap 
 } from '../types/index.js';
-import { log } from './logger.js';
+import { log } from './logger';
 
 /**
  * Type guards pour vérifier les types
