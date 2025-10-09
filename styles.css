@@ -1,17 +1,53 @@
 :root {
+    /* Couleurs de base */
     --primary: #2c3e50;
     --secondary: #34495e;
     --accent: #3498db;
     --success: #27ae60;
     --warning: #f39c12;
     --danger: #e74c3c;
-    --dark: #2c3e50;
-    --light: #ecf0f1;
-    --white: #ffffff;
+    
+    /* Thème clair (par défaut) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
     --text-muted: #7f8c8d;
+    --border-color: rgba(0, 0, 0, 0.1);
     --shadow: rgba(44, 62, 80, 0.1);
-    --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,249,250,0.95) 100%);
+    --card-bg: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,249,250,0.95) 100%);
+    --input-bg: #ffffff;
+    --input-border: #dee2e6;
+    
+    /* Compatibilité (anciennes variables) */
+    --dark: var(--text-primary);
+    --light: var(--bg-secondary);
+    --white: var(--bg-primary);
+    --gradient-main: var(--bg-gradient);
+    --gradient-card: var(--card-bg);
+}
+
+/* Thème sombre */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-gradient: linear-gradient(135deg, #2c3e50 0%, #4a4a4a 100%);
+    --text-primary: #e9ecef;
+    --text-secondary: #adb5bd;
+    --text-muted: #6c757d;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow: rgba(0, 0, 0, 0.3);
+    --card-bg: linear-gradient(135deg, rgba(45,45,45,0.98) 0%, rgba(35,35,35,0.95) 100%);
+    --input-bg: #3a3a3a;
+    --input-border: #4a4a4a;
+    
+    /* Mise à jour des variables de compatibilité */
+    --dark: var(--text-primary);
+    --light: var(--bg-secondary);
+    --white: var(--bg-primary);
+    --gradient-main: var(--bg-gradient);
+    --gradient-card: var(--card-bg);
 }
 
 * {
@@ -22,12 +58,13 @@
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: var(--gradient-main);
+    background: var(--bg-gradient);
     background-size: 400% 400%;
     animation: gradientShift 20s ease infinite;
-    color: var(--dark);
+    color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 @keyframes gradientShift {
@@ -66,7 +103,8 @@ header {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: all 0.3s ease;
 }
 
 .header-content {
@@ -104,13 +142,13 @@ header {
 }
 
 .logo-text {
-    color: var(--white);
+    color: var(--text-primary);
 }
 
 .logo-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-primary);
 }
 
 .logo-subtitle {
@@ -651,6 +689,159 @@ footer p {
 /* Ajustement pour les pages avec header simple */
 body.has-simple-header .container {
     margin-top: 80px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(15px);
+    font-size: 20px;
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px var(--shadow);
+}
+
+.theme-toggle:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.theme-toggle .icon {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.theme-toggle:hover .icon {
+    transform: rotate(180deg);
+}
+
+/* Adaptation responsive pour le theme toggle */
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 15px;
+        right: 70px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+/* Animation d'apparition pour le theme toggle */
+@keyframes themeToggleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.theme-toggle {
+    animation: themeToggleAppear 0.5s ease-out 0.2s both;
+}
+
+/* Thème sombre - Ajustements pour les cartes et composants */
+[data-theme="dark"] .section-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .simple-header {
+    background: rgba(45, 45, 45, 0.9);
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .back-btn-simple {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .back-btn-simple:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] input, 
+[data-theme="dark"] button {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: rgba(45, 45, 45, 0.9);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background: rgba(55, 55, 55, 0.9);
+}
+
+/* Amélioration des contrastes en mode sombre */
+[data-theme="dark"] .section-card h2 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .cta-button {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border: 1px solid var(--accent);
+}
+
+[data-theme="dark"] .cta-button:hover {
+    background: transparent;
+    color: var(--accent);
+}
+
+[data-theme="dark"] .search-bar-header input {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .search-bar-header input::placeholder {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .slogan h2,
+[data-theme="dark"] .slogan p {
+    color: var(--text-primary);
+}
+
+/* Transition douce pour tous les éléments lors du changement de thème */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Optimisation pour les images en mode sombre */
+[data-theme="dark"] img {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
