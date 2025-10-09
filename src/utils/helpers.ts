@@ -9,6 +9,7 @@ import type {
   NotificationType,
   CustomEventMap 
 } from '../types/index.js';
+import { log } from './logger.js';
 
 /**
  * Type guards pour vérifier les types
@@ -271,7 +272,7 @@ export class StorageHelper {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.warn('Erreur localStorage set:', error);
+      log.warn('Erreur localStorage set', 'STORAGE', error);
     }
   }
 
@@ -283,7 +284,7 @@ export class StorageHelper {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : defaultValue;
     } catch (error) {
-      console.warn('Erreur localStorage get:', error);
+      log.warn('Erreur localStorage get', 'STORAGE', error);
       return defaultValue;
     }
   }
@@ -295,7 +296,7 @@ export class StorageHelper {
     try {
       localStorage.removeItem(key);
     } catch (error) {
-      console.warn('Erreur localStorage remove:', error);
+      log.warn('Erreur localStorage remove', 'STORAGE', error);
     }
   }
 
@@ -315,7 +316,7 @@ export class StorageHelper {
         .filter(key => key.startsWith(prefix))
         .forEach(key => localStorage.removeItem(key));
     } catch (error) {
-      console.warn('Erreur localStorage clearWithPrefix:', error);
+      log.warn('Erreur localStorage clearWithPrefix', 'STORAGE', error);
     }
   }
 }
@@ -339,7 +340,7 @@ export class PerformanceHelper {
   static endMark(name: string): number {
     const start = this.marks.get(name);
     if (!start) {
-      console.warn(`Mark '${name}' not found`);
+      log.warn(`Mark '${name}' not found`, 'PERF');
       return 0;
     }
     
@@ -359,7 +360,7 @@ export class PerformanceHelper {
     const result = await fn();
     const duration = this.endMark(name);
     
-    console.log(`⏱️ ${name}: ${duration.toFixed(2)}ms`);
+    log.perf(name, performance.now() - duration, 'ASYNC');
     
     return { result, duration };
   }
@@ -375,7 +376,7 @@ export class PerformanceHelper {
     const result = fn();
     const duration = this.endMark(name);
     
-    console.log(`⏱️ ${name}: ${duration.toFixed(2)}ms`);
+    log.perf(name, performance.now() - duration, 'SYNC');
     
     return { result, duration };
   }
@@ -463,7 +464,7 @@ export class ErrorHelper {
       try {
         return fn(...args);
       } catch (error) {
-        console.error('Erreur dans safeHandler:', error);
+        log.error('Erreur dans safeHandler', 'SAFETY', error);
         return fallback;
       }
     };
@@ -479,7 +480,7 @@ export class ErrorHelper {
     try {
       return await fn();
     } catch (error) {
-      console.error('Erreur dans safeAsync:', error);
+      log.error('Erreur dans safeAsync', 'SAFETY', error);
       return fallback;
     }
   }

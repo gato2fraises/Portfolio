@@ -1,6 +1,6 @@
 /**
- * Configuration ESLint simplifiée pour TypeScript
- * Règles de base pour le portfolio
+ * Configuration ESLint optimisée pour TypeScript
+ * Règles adaptées au portfolio moderne
  */
 module.exports = {
   root: true,
@@ -21,9 +21,22 @@ module.exports = {
   plugins: [
     '@typescript-eslint'
   ],
+  globals: {
+    'Event': 'readonly',
+    'CustomEvent': 'readonly',
+    'Element': 'readonly',
+    'HTMLElement': 'readonly',
+    'NodeListOf': 'readonly',
+    'EventListener': 'readonly',
+    'EventListenerOptions': 'readonly',
+    'AddEventListenerOptions': 'readonly',
+    'EventListenerOrEventListenerObject': 'readonly',
+    'FrameRequestCallback': 'readonly'
+  },
   rules: {
     // Règles de base
     'no-unused-vars': 'off', // Désactivé car TypeScript s'en occupe
+    'no-undef': 'off', // Désactivé pour TypeScript
     'no-console': 'warn',
     'no-debugger': 'error',
     'no-alert': 'error',
@@ -38,12 +51,18 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.test.ts', '*.spec.ts'],
+      files: ['*.test.ts', '*.spec.ts', 'setup.ts'],
       env: {
         jest: true
       },
       rules: {
         'no-console': 'off'
+      }
+    },
+    {
+      files: ['src/utils/logger.ts'],
+      rules: {
+        'no-console': 'off' // Autorisé dans le logger
       }
     }
   ],

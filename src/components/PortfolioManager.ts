@@ -6,6 +6,7 @@ import type {
   Language,
   NotificationType 
 } from '../types/index.js';
+import { log } from '../utils/logger.js';
 
 /**
  * Gestionnaire principal du portfolio avancé en TypeScript
@@ -42,7 +43,7 @@ export class PortfolioManager implements IPortfolioManager {
 
   constructor() {
     this.init().catch(error => {
-      console.error('❌ Erreur initialisation portfolio:', error);
+      log.error('❌ Erreur initialisation portfolio:', error);
       this.handleInitError(error);
     });
   }
@@ -52,7 +53,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   async init(): Promise<void> {
     try {
-      console.log('🚀 Initialisation du Portfolio Avancé (TypeScript)...');
+      log.info('🚀 Initialisation du Portfolio Avancé (TypeScript)...');
       
       this.state.isLoading = true;
       this.showLoader();
@@ -76,7 +77,7 @@ export class PortfolioManager implements IPortfolioManager {
       
       this.state.isInitialized = true;
       this.state.isLoading = false;
-      console.log('✅ Portfolio initialisé avec succès (TypeScript)');
+      log.info('✅ Portfolio initialisé avec succès (TypeScript)');
       
       // Afficher les stats d'initialisation
       this.showInitStats();
@@ -121,10 +122,10 @@ export class PortfolioManager implements IPortfolioManager {
     results.forEach((result, index) => {
       const componentNames = ['i18n', 'theme', 'analytics', 'PWA', 'GSAP'];
       if (result.status === 'fulfilled') {
-        console.log(`✅ ${componentNames[index]} initialisé`);
+        log.info(`✅ ${componentNames[index]} initialisé`);
         this.components.set(componentNames[index], result.value);
       } else {
-        console.warn(`⚠️ ${componentNames[index]} non disponible:`, result.reason);
+        log.warn(`⚠️ ${componentNames[index]} non disponible:`, result.reason);
       }
     });
     
@@ -208,7 +209,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private initializeBlogPage(): void {
     if (window.blogManager) {
-      console.log('📝 Blog système activé');
+      log.info('📝 Blog système activé');
     }
   }
 
@@ -217,7 +218,7 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private initializeContactPage(): void {
     if (window.contactManager) {
-      console.log('✉️ Système de contact activé');
+      log.info('✉️ Système de contact activé');
     }
   }
 
@@ -438,7 +439,7 @@ export class PortfolioManager implements IPortfolioManager {
   private setupGlobalEventListeners(): void {
     // Gestion des erreurs globales
     window.addEventListener('error', (e: ErrorEvent) => {
-      console.error('Erreur JavaScript:', e.error);
+      log.error('Erreur JavaScript:', e.error);
       if (window.analytics) {
         (window.analytics as any).trackEvent?.('javascript_error', {
           message: e.message,
@@ -529,7 +530,7 @@ export class PortfolioManager implements IPortfolioManager {
     if (window.showNotification) {
       window.showNotification(message, type);
     } else {
-      console.log(`${type.toUpperCase()}: ${message}`);
+      log.info(`${type.toUpperCase()}: ${message}`);
     }
   }
 
@@ -538,11 +539,11 @@ export class PortfolioManager implements IPortfolioManager {
    */
   private showInitStats(): void {
     if (window.__ADMIN_MODE__) {
-      console.log('📊 Statistiques d\'initialisation (TypeScript):');
-      console.log(`- Composants chargés: ${this.components.size}`);
-      console.log(`- Page: ${this.getCurrentPage()}`);
-      console.log(`- Thème: ${document.documentElement.dataset.theme || 'light'}`);
-      console.log(`- Langue: ${document.documentElement.lang || 'fr'}`);
+      log.info('📊 Statistiques d\'initialisation (TypeScript):');
+      log.info(`- Composants chargés: ${this.components.size}`);
+      log.info(`- Page: ${this.getCurrentPage()}`);
+      log.info(`- Thème: ${document.documentElement.dataset.theme || 'light'}`);
+      log.info(`- Langue: ${document.documentElement.lang || 'fr'}`);
       
       // Exposer les méthodes d'administration
       window.portfolioManager = this;
@@ -560,7 +561,7 @@ export class PortfolioManager implements IPortfolioManager {
    * Gère les erreurs d'initialisation
    */
   private handleInitError(error: Error): void {
-    console.error('Erreur critique:', error);
+    log.error('Erreur critique:', error);
     
     // Afficher un message d'erreur à l'utilisateur
     const errorMessage = document.createElement('div');
@@ -603,7 +604,7 @@ export class PortfolioManager implements IPortfolioManager {
     this.components.clear();
     
     this.state.isInitialized = false;
-    console.log('Portfolio TypeScript détruit');
+    log.info('Portfolio TypeScript détruit');
   }
 
   getState(): ComponentState {
@@ -624,7 +625,7 @@ export class PortfolioManager implements IPortfolioManager {
   }
 
   async reinitialize(): Promise<void> {
-    console.log('🔄 Réinitialisation du portfolio TypeScript...');
+    log.info('🔄 Réinitialisation du portfolio TypeScript...');
     this.destroy();
     this.components.clear();
     this.state.isInitialized = false;

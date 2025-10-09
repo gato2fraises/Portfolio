@@ -28,12 +28,12 @@ declare global {
     addEventListener<K extends keyof CustomEventMap>(
       type: K,
       listener: (this: Document, ev: CustomEventMap[K]) => any,
-      options?: boolean | AddEventListenerOptions
+      options?: boolean | EventListenerOptions
     ): void;
     addEventListener(
       type: string,
       listener: EventListenerOrEventListenerObject,
-      options?: boolean | AddEventListenerOptions
+      options?: boolean | EventListenerOptions
     ): void;
   }
   
@@ -87,7 +87,7 @@ export interface ComponentState {
 }
 
 export interface EventListenerMap {
-  [key: string]: EventListener[];
+  [key: string]: Array<(event: Event) => void>;
 }
 
 // Types pour le blog

@@ -101,7 +101,7 @@ Object.defineProperty(window, 'performance', {
 });
 
 // Mock pour requestAnimationFrame
-global.requestAnimationFrame = jest.fn((cb: FrameRequestCallback) => setTimeout(cb, 16));
+global.requestAnimationFrame = jest.fn((cb: (time: number) => void) => setTimeout(cb, 16));
 global.cancelAnimationFrame = jest.fn((id: number) => clearTimeout(id));
 
 // Mock pour console (optionnel - pour réduire le bruit)
@@ -135,10 +135,10 @@ afterEach(() => {
 
 // Configuration avant tous les tests
 beforeAll(() => {
-  console.log('🧪 Tests Jest initialisés avec configuration TypeScript');
+  // log.info('🧪 Tests Jest initialisés avec configuration TypeScript');
 });
 
 // Nettoyage après tous les tests
 afterAll(() => {
-  console.log('✅ Tests Jest terminés');
+  // log.info('✅ Tests Jest terminés');
 });
