@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Dylan Carion - Développeur Web Junior en recherche d'alternance">
+    <meta name="keywords" content="contact, Dylan Carion, développeur web, alternance, BTS SIO SLAM">
+    <meta name="author" content="Dylan Carion">
+    <title>Contact - Dylan Carion | Développeur Web Junior</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js"></script>
+    <script src="contact.js"></script>
+</head>
+<body>
+    <header class="simple-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/Logo Afip.jpg" alt="Dylan Carion" loading="eager">
+                <div class="logo-text">
+                    <div class="logo-title" data-i18n="header.title">Dylan Carion</div>
+                    <div class="logo-subtitle" data-i18n="header.subtitle">Portfolio Professionnel</div>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" data-i18n="nav.home">Accueil</a>
+                <a href="cv.html" data-i18n="nav.cv">CV</a>
+                <a href="projet.html" data-i18n="nav.projects">Projets</a>
+                <a href="blog.html" data-i18n="nav.blog">Blog</a>
+                <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-container">
+        <div class="contact-hero">
+            <h1 data-i18n="contact.title">Contactez-moi</h1>
+            <p data-i18n="contact.subtitle">Vous avez un projet ou une opportunité d'alternance ? Parlons-en !</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2 data-i18n="contact.info.title">Informations de Contact</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3 data-i18n="contact.info.email.title">Email</h3>
+                        <a href="mailto:dylan.carion@example.com">dylan.carion@example.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <h3 data-i18n="contact.info.linkedin.title">LinkedIn</h3>
+                        <a href="https://linkedin.com/in/dylan-carion" target="_blank">linkedin.com/in/dylan-carion</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <div class="contact-details">
+                        <h3 data-i18n="contact.info.github.title">GitHub</h3>
+                        <a href="https://github.com/dylan-carion" target="_blank">github.com/dylan-carion</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3 data-i18n="contact.info.location.title">Localisation</h3>
+                        <span data-i18n="contact.info.location.value">France - Mobilité nationale</span>
+                    </div>
+                </div>
+
+                <div class="availability-status">
+                    <div class="status-indicator"></div>
+                    <div class="status-text">
+                        <strong data-i18n="contact.availability.title">Disponible pour alternance</strong>
+                        <span data-i18n="contact.availability.subtitle">Septembre 2025 - Réponse sous 24h</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h2 data-i18n="contact.form.title">Envoyez-moi un message</h2>
+                
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.form.name.label">Nom complet *</label>
+                        <input type="text" id="name" name="name" required 
+                               data-i18n="contact.form.name.placeholder" placeholder="Votre nom complet">
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" data-i18n="contact.form.email.label">Email *</label>
+                        <input type="email" id="email" name="email" required 
+                               data-i18n="contact.form.email.placeholder" placeholder="votre.email@exemple.com">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company" data-i18n="contact.form.company.label">Entreprise / Organisation</label>
+                        <input type="text" id="company" name="company" 
+                               data-i18n="contact.form.company.placeholder" placeholder="Nom de votre entreprise">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" data-i18n="contact.form.subject.label">Sujet *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" data-i18n="contact.form.subject.placeholder">Sélectionnez un sujet</option>
+                            <option value="alternance" data-i18n="contact.form.subject.options.alternance">Opportunité d'alternance</option>
+                            <option value="stage" data-i18n="contact.form.subject.options.stage">Proposition de stage</option>
+                            <option value="projet" data-i18n="contact.form.subject.options.projet">Projet de collaboration</option>
+                            <option value="conseil" data-i18n="contact.form.subject.options.conseil">Demande de conseil</option>
+                            <option value="autre" data-i18n="contact.form.subject.options.autre">Autre</option>
+                        </select>
+                        <span class="error-message" id="subject-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.form.message.label">Message *</label>
+                        <textarea id="message" name="message" required rows="6" 
+                                  data-i18n="contact.form.message.placeholder" placeholder="Décrivez votre projet, vos attentes ou votre opportunité..."></textarea>
+                        <span class="error-message" id="message-error"></span>
+                        <div class="character-count">
+                            <span id="char-count">0</span> / 1000
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="checkmark"></span>
+                            <span data-i18n="contact.form.privacy">J'accepte que mes données soient utilisées pour me recontacter concernant ma demande *</span>
+                        </label>
+                        <span class="error-message" id="privacy-error"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span class="btn-text" data-i18n="contact.form.submit">Envoyer le message</span>
+                        <span class="btn-loading">
+                            <div class="spinner"></div>
+                            <span data-i18n="contact.form.sending">Envoi en cours...</span>
+                        </span>
+                    </button>
+                </form>
+
+                <div class="form-success" id="form-success">
+                    <div class="success-icon">✅</div>
+                    <h3 data-i18n="contact.success.title">Message envoyé avec succès !</h3>
+                    <p data-i18n="contact.success.message">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 data-i18n="contact.faq.title">Questions Fréquentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q1.question">Quel type d'alternance recherchez-vous ?</h3>
+                    <p data-i18n="contact.faq.q1.answer">Je recherche une alternance en développement web (front-end, back-end ou full-stack) dans le cadre de mon BTS SIO SLAM, débutant en septembre 2025.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q2.question">Êtes-vous mobile géographiquement ?</h3>
+                    <p data-i18n="contact.faq.q2.answer">Oui, je suis ouvert à la mobilité sur l'ensemble du territoire français pour la bonne opportunité.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q3.question">Quelles technologies maîtrisez-vous ?</h3>
+                    <p data-i18n="contact.faq.q3.answer">HTML5, CSS3, JavaScript ES6+, PHP, bases de données, et je suis en apprentissage constant sur les frameworks modernes.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q4.question">Dans quel délai répondez-vous ?</h3>
+                    <p data-i18n="contact.faq.q4.answer">Je m'engage à répondre à tous les messages dans un délai maximum de 24 heures.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="currentYear">2025</span> <span data-i18n="footer.copyright">Dylan Carion. Tous droits réservés.</span></p>
+            <div class="footer-links">
+                <a href="index.html" data-i18n="nav.home">Accueil</a>
+                <a href="cv.html" data-i18n="nav.cv">CV</a>
+                <a href="projet.html" data-i18n="nav.projects">Projets</a>
+                <a href="blog.html" data-i18n="nav.blog">Blog</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

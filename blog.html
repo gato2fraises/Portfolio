@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog technique de Dylan Carion - Articles sur le développement web, tutorials et retours d'expérience">
+    <meta name="keywords" content="blog technique, développement web, tutorials, JavaScript, HTML, CSS, Dylan Carion">
+    <meta name="author" content="Dylan Carion">
+    <title>Blog Technique - Dylan Carion | Développeur Web Junior</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js"></script>
+    <script src="blog.js"></script>
+</head>
+<body>
+    <header class="simple-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/Logo Afip.jpg" alt="Dylan Carion" loading="eager">
+                <div class="logo-text">
+                    <div class="logo-title" data-i18n="header.title">Dylan Carion</div>
+                    <div class="logo-subtitle" data-i18n="header.subtitle">Portfolio Professionnel</div>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" data-i18n="nav.home">Accueil</a>
+                <a href="cv.html" data-i18n="nav.cv">CV</a>
+                <a href="projet.html" data-i18n="nav.projects">Projets</a>
+                <a href="blog.html" class="active" data-i18n="nav.blog">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="blog-hero">
+            <h1 data-i18n="blog.title">Blog Technique</h1>
+            <p data-i18n="blog.subtitle">Découvrez mes articles techniques, tutorials et retours d'expérience en développement web</p>
+        </div>
+
+        <div class="blog-content">
+            <!-- Barre de recherche et filtres -->
+            <div class="blog-filters">
+                <div class="search-container">
+                    <input type="text" id="blog-search" data-i18n="blog.search.placeholder" placeholder="Rechercher un article...">
+                    <button id="search-btn" data-i18n="blog.search.button">🔍</button>
+                </div>
+                
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all" data-i18n="blog.filters.all">Tous</button>
+                    <button class="filter-btn" data-category="javascript" data-i18n="blog.filters.javascript">JavaScript</button>
+                    <button class="filter-btn" data-category="html-css" data-i18n="blog.filters.html-css">HTML/CSS</button>
+                    <button class="filter-btn" data-category="tutorials" data-i18n="blog.filters.tutorials">Tutorials</button>
+                    <button class="filter-btn" data-category="experiences" data-i18n="blog.filters.experiences">Expériences</button>
+                </div>
+            </div>
+
+            <!-- Grille d'articles -->
+            <div class="articles-grid" id="articles-container">
+                <!-- Les articles seront chargés dynamiquement -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Boutons de pagination générés dynamiquement -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal pour afficher l'article complet -->
+    <div class="article-modal" id="article-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Contenu de l'article -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="currentYear">2025</span> <span data-i18n="footer.copyright">Dylan Carion. Tous droits réservés.</span></p>
+            <div class="footer-links">
+                <a href="index.html" data-i18n="nav.home">Accueil</a>
+                <a href="cv.html" data-i18n="nav.cv">CV</a>
+                <a href="projet.html" data-i18n="nav.projects">Projets</a>
+                <a href="blog.html" data-i18n="nav.blog">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

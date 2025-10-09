@@ -9,8 +9,29 @@
     <title>Dylan Carion - Développeur Web Junior | Portfolio Professionnel</title>
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/gsap.css">
+    <link rel="stylesheet" href="css/floating-nav.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Meta tags PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dylan Carion Portfolio">
+    <meta name="theme-color" content="#667eea">
+    
     <script src="i18n.js"></script>
     <script src="theme.js"></script>
+    <script src="analytics.js"></script>
+    <script src="pwa.js"></script>
+    <script src="gsap.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
     <header>
@@ -40,10 +61,10 @@
         </div>
     </header>
 
-    <main>
-        <section class="intro-section">
-            <h1 data-i18n="home.intro.title">Dylan Carion - Développeur Web Junior</h1>
-            <p data-i18n="home.intro.description">
+    <main class="main-content">
+        <section class="intro-section section animate-on-scroll">
+            <h1 class="hero-title" data-i18n="home.intro.title">Dylan Carion - Développeur Web Junior</h1>
+            <p class="hero-subtitle animate-on-load" data-i18n="home.intro.description">
                 Étudiant en BTS SIO option SLAM, je recherche activement une <strong>alternance en développement web</strong> 
                 pour septembre 2025. Rigoureux, autonome et passionné par les technologies web modernes, 
                 j'apporte motivation et compétences techniques à votre équipe tout en continuant 
@@ -128,6 +149,50 @@
             </div>
         </section>
 
+        <!-- Section Blog -->
+        <section class="blog-preview-section section-card">
+            <h2>
+                <div class="section-icon">📝</div>
+                <span data-i18n="home.blog.title">Blog Technique</span>
+            </h2>
+            <div class="blog-preview-content">
+                <a class="img-link" href="blog.html">
+                    <img src="images/Programming_code.jpg" alt="Blog technique" loading="lazy">
+                </a>
+                <div class="blog-description">
+                    <p data-i18n="home.blog.description">
+                        <strong>Articles techniques et retours d'expérience</strong><br>
+                        Découvrez mes réflexions sur le développement web, mes tutorials détaillés, 
+                        et mes retours d'expérience sur les technologies modernes. Du JavaScript ES6+ 
+                        aux frameworks CSS, en passant par les bonnes pratiques de développement. 
+                        Une veille technologique active partagée avec la communauté.
+                    </p>
+                    <div class="blog-stats">
+                        <div class="stat-item">
+                            <strong>4</strong>
+                            <span data-i18n="home.blog.stats.articles">Articles</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>3</strong>
+                            <span data-i18n="home.blog.stats.categories">Catégories</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>26</strong>
+                            <span data-i18n="home.blog.stats.readTime">Min lecture</span>
+                        </div>
+                    </div>
+                    <div class="blog-buttons">
+                        <a href="blog.html" class="contact-btn" data-i18n="home.blog.button.main">
+                            Lire le blog
+                        </a>
+                        <a href="blog.html#tutorials" class="download-btn" data-i18n="home.blog.button.tutorials">
+                            Voir les tutorials
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="contact-section section-card">
             <h2>
                 <div class="section-icon">🎯</div>
@@ -140,15 +205,15 @@
                 j'apporte créativité, rigueur technique et passion pour l'innovation technologique. 
                 Disponible immédiatement pour entretiens.
             </p>
-            <div class="contact-buttons">
-                <a href="cv.html" class="contact-btn" data-i18n="home.contact.cv.button">
+            <div class="contact-buttons hero-buttons animate-on-load">
+                <a href="cv.html" class="contact-btn btn" data-i18n="home.contact.cv.button">
                     Consulter mon CV
                 </a>
-                <a href="projet.html" class="download-btn" data-i18n="home.contact.projects.button">
+                <a href="projet.html" class="download-btn btn" data-i18n="home.contact.projects.button">
                     Voir mes projets
                 </a>
             </div>
-            <div style="margin-top: 20px; text-align: center; padding: 12px; background: rgba(39, 174, 96, 0.1); border-radius: 8px; border: 1px solid rgba(39, 174, 96, 0.2);">
+            <div class="animate-on-load" style="margin-top: 20px; text-align: center; padding: 12px; background: rgba(39, 174, 96, 0.1); border-radius: 8px; border: 1px solid rgba(39, 174, 96, 0.2);">
                 <strong style="color: var(--success);" data-i18n="home.contact.status.title">Candidature active</strong><br>
                 <small data-i18n="home.contact.status.subtitle">Disponible pour entretien • Motivé • Prêt à contribuer</small>
             </div>
@@ -160,6 +225,34 @@
         <p data-i18n="footer.subtitle">Recherche alternance développement web - Septembre 2025</p>
         <p data-i18n="footer.description">Portfolio professionnel - Candidature active</p>
     </footer>
+
+    <!-- Conteneurs pour les nouveaux composants -->
+    <div id="notification-container"></div>
+    <div class="scroll-progress"></div>
+    <div class="page-loader">
+        <div class="gsap-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <p>Chargement du portfolio...</p>
+    </div>
+
+    <!-- Navigation flottante vers les nouvelles pages -->
+    <nav class="floating-nav">
+        <a href="blog.html" class="nav-item" title="Blog Technique">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Blog</span>
+        </a>
+        <a href="contact.html" class="nav-item" title="Contact">
+            <span class="nav-icon">✉️</span>
+            <span class="nav-label">Contact</span>
+        </a>
+        <a href="#" onclick="window.analytics?.showDashboard()" class="nav-item" title="Analytics">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </a>
+    </nav>
 
     <script src="script.js"></script>
 </body>

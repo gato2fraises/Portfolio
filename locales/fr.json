@@ -31,6 +31,7 @@
     "home": "Accueil",
     "cv": "CV",
     "projects": "Projets",
+    "blog": "Blog",
     "research": "Recherche",
     "game": "Jeu",
     "login": "Connexion",
@@ -73,6 +74,19 @@
         "description": "<strong>Étude sociologique - Développement de compétences transversales</strong><br>Projet de recherche universitaire démontrant mes compétences en méthodologie, analyse critique et rédaction technique. Gestion complète de projet : planification, recherche documentaire, analyse de données, présentation professionnelle. Exemple concret de rigueur intellectuelle et capacité à traiter des sujets complexes.",
         "skillsHighlight": "<strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • Analyse critique • Communication professionnelle",
         "button": "Voir la méthodologie"
+      },
+      "blog": {
+        "title": "Blog Technique",
+        "description": "<strong>Articles techniques et retours d'expérience</strong><br>Découvrez mes réflexions sur le développement web, mes tutorials détaillés, et mes retours d'expérience sur les technologies modernes. Du JavaScript ES6+ aux frameworks CSS, en passant par les bonnes pratiques de développement. Une veille technologique active partagée avec la communauté.",
+        "stats": {
+          "articles": "Articles",
+          "categories": "Catégories", 
+          "readTime": "Min lecture"
+        },
+        "button": {
+          "main": "Lire le blog",
+          "tutorials": "Voir les tutorials"
+        }
       },
       "internship": {
         "title": "Recherche d'Alternance - Septembre 2025",
@@ -128,6 +142,31 @@
   },
   "game": {
     "metaTitle": "Mini Jeu Plateforme ✨ - Dylan Carion"
+  },
+  "blog": {
+    "metaTitle": "Blog Technique - Dylan Carion | Développeur Web Junior",
+    "metaDescription": "Blog technique de Dylan Carion - Articles sur le développement web, tutorials et retours d'expérience",
+    "title": "Blog Technique",
+    "subtitle": "Découvrez mes articles techniques, tutorials et retours d'expérience en développement web",
+    "search": {
+      "placeholder": "Rechercher un article...",
+      "button": "Rechercher"
+    },
+    "filters": {
+      "all": "Tous",
+      "javascript": "JavaScript",
+      "html-css": "HTML/CSS",
+      "tutorials": "Tutorials",
+      "experiences": "Expériences"
+    },
+    "article": {
+      "readTime": "{time} min",
+      "author": "Par {author}",
+      "readMore": "Lire l'article",
+      "noArticles": "Aucun article trouvé",
+      "loading": "Chargement des articles...",
+      "error": "Erreur lors du chargement des articles"
+    }
   },
   "login": {
     "metaTitle": "Accès Portfolio - Dylan Carion",

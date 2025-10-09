@@ -31,6 +31,7 @@
     "home": "Home",
     "cv": "Resume",
     "projects": "Projects",
+    "blog": "Blog",
     "research": "Research",
     "game": "Game",
     "login": "Login",
@@ -73,6 +74,19 @@
         "description": "<strong>Sociological Study - Transversal Skills Development</strong><br>University research project demonstrating my skills in methodology, critical analysis and technical writing. Complete project management: planning, documentary research, data analysis, professional presentation. Concrete example of intellectual rigor and ability to handle complex subjects.",
         "skillsHighlight": "<strong>Skills developed:</strong> Project management • Methodological research • Critical analysis • Professional communication",
         "button": "View methodology"
+      },
+      "blog": {
+        "title": "Technical Blog",
+        "description": "<strong>Technical articles and experience feedback</strong><br>Discover my thoughts on web development, my detailed tutorials, and my experience feedback on modern technologies. From JavaScript ES6+ to CSS frameworks, including development best practices. Active technological watch shared with the community.",
+        "stats": {
+          "articles": "Articles",
+          "categories": "Categories", 
+          "readTime": "Min read"
+        },
+        "button": {
+          "main": "Read the blog",
+          "tutorials": "View tutorials"
+        }
       },
       "internship": {
         "title": "Seeking Internship - September 2025",
@@ -272,6 +286,31 @@
       "welcome": "Welcome to my professional portfolio",
       "security": "Secure access for a personalized experience",
       "contact": "For full access, contact me directly"
+    }
+  },
+  "blog": {
+    "metaTitle": "Technical Blog - Dylan Carion | Junior Web Developer",
+    "metaDescription": "Dylan Carion's technical blog - Articles on web development, tutorials and experience feedback",
+    "title": "Technical Blog",
+    "subtitle": "Discover my technical articles, tutorials and experience feedback in web development",
+    "search": {
+      "placeholder": "Search for an article...",
+      "button": "Search"
+    },
+    "filters": {
+      "all": "All",
+      "javascript": "JavaScript",
+      "html-css": "HTML/CSS",
+      "tutorials": "Tutorials",
+      "experiences": "Experiences"
+    },
+    "article": {
+      "readTime": "{time} min",
+      "author": "By {author}",
+      "readMore": "Read article",
+      "noArticles": "No articles found",
+      "loading": "Loading articles...",
+      "error": "Error loading articles"
     }
   }
 }
