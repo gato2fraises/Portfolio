@@ -1,45 +1,408 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dylan Carion - Portfolio</title>
-  <meta name="description" content="Portfolio de Dylan Carion, étudiant en BTS SIO SLAM spécialisé en développement web et logiciel">
-  <meta name="keywords" content="Dylan Carion, BTS SIO SLAM, développeur, portfolio, web, logiciel">
-  <meta name="author" content="Dylan Carion">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dylancarion.dev/">
-  <meta property="og:title" content="Dylan Carion - Portfolio">
-  <meta property="og:description" content="Portfolio de Dylan Carion, étudiant en BTS SIO SLAM">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://dylancarion.dev/">
-  <meta property="twitter:title" content="Dylan Carion - Portfolio">
-  <meta property="twitter:description" content="Portfolio de Dylan Carion, étudiant en BTS SIO SLAM">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dylan Carion - Développeur Web Junior passionné par les technologies modernes. Étudiant BTS SIO SLAM spécialisé en TypeScript, React, Node.js et développement full-stack.">
+    <meta name="keywords" content="Dylan Carion, développeur web, portfolio, BTS SIO SLAM, TypeScript, JavaScript, React, Node.js, développeur full-stack">
+    <meta name="author" content="Dylan Carion">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dylan-carion.dev/">
+    <meta property="og:title" content="Dylan Carion - Développeur Web Junior">
+    <meta property="og:description" content="Portfolio de Dylan Carion, développeur web passionné par les technologies modernes.">
+    <meta property="og:image" content="/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dylan-carion.dev/">
+    <meta property="twitter:title" content="Dylan Carion - Développeur Web Junior">
+    <meta property="twitter:description" content="Portfolio de Dylan Carion, développeur web passionné par les technologies modernes.">
+    <meta property="twitter:image" content="/og-image.jpg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-navbutton-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>Dylan Carion - Portfolio | Développeur Web Junior</title>
+    
+    <!-- Préconnexions pour les performances -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-  <div id="app">
-    <div class="loading-screen">
-      <div class="loading-spinner"></div>
-      <p>Chargement...</p>
-    </div>
-  </div>
+    <div id="app">
+        <!-- Header/Navigation -->
+        <header class="header">
+            <nav class="nav">
+                <div class="nav__brand">
+                    <h1 class="nav__title">Dylan Carion</h1>
+                </div>
+                <ul class="nav__links">
+                    <li><a href="#home" class="nav__link">Accueil</a></li>
+                    <li><a href="#about" class="nav__link">À propos</a></li>
+                    <li><a href="#projects" class="nav__link">Projets</a></li>
+                    <li><a href="#skills" class="nav__link">Compétences</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <button class="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                    <button class="nav__toggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
 
-  <!-- Main TypeScript Entry -->
-  <script type="module" src="/src/main.ts"></script>
+        <!-- Section Héro -->
+        <main>
+            <section id="home" class="hero">
+                <div class="hero__content">
+                    <div class="hero__greeting">
+                        <span class="hero__wave">👋</span>
+                        <span class="hero__greeting-text">Salut ! Je suis</span>
+                    </div>
+                    <h1 class="hero__title">
+                        <span class="hero__name" data-text="Dylan Carion">Dylan Carion</span>
+                    </h1>
+                    <div class="hero__subtitle">
+                        <span class="hero__role" data-typewriter>Développeur Web Junior</span>
+                        <span class="hero__cursor">|</span>
+                    </div>
+                    <p class="hero__description">
+                        Passionné par le développement web moderne, je crée des solutions élégantes 
+                        et performantes avec les dernières technologies. Actuellement étudiant en 
+                        <strong>BTS SIO SLAM</strong> et à la recherche d'opportunités d'apprentissage.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#projects" class="btn btn--primary">
+                            <span>Voir mes projets</span>
+                            <span class="btn__icon">🚀</span>
+                        </a>
+                        <a href="#contact" class="btn btn--outline">
+                            <span>Me contacter</span>
+                            <span class="btn__icon">📧</span>
+                        </a>
+                    </div>
+                    <div class="hero__social">
+                        <a href="https://github.com/dylancarion" class="social-link" aria-label="GitHub" target="_blank">
+                            <span class="social-link__icon">📱</span>
+                            <span class="social-link__text">GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/dylancarion" class="social-link" aria-label="LinkedIn" target="_blank">
+                            <span class="social-link__icon">💼</span>
+                            <span class="social-link__text">LinkedIn</span>
+                        </a>
+                        <a href="/cv.pdf" class="social-link" aria-label="CV" target="_blank">
+                            <span class="social-link__icon">📄</span>
+                            <span class="social-link__text">CV</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="hero__avatar">
+                        <div class="hero__placeholder">👨‍💻</div>
+                        <div class="hero__glow"></div>
+                    </div>
+                    <div class="hero__decorations">
+                        <div class="floating-element floating-element--1">⚡</div>
+                        <div class="floating-element floating-element--2">🎯</div>
+                        <div class="floating-element floating-element--3">💻</div>
+                        <div class="floating-element floating-element--4">🚀</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section À propos -->
+            <section id="about" class="about">
+                <div class="container">
+                    <h2 class="section__title">À propos de moi</h2>
+                    <div class="about__content">
+                        <div class="about__text">
+                            <p>
+                                Étudiant en BTS SIO SLAM, je me spécialise dans le développement 
+                                d'applications web modernes. Mon parcours m'a permis d'acquérir 
+                                une solide base en programmation et une passion pour les technologies 
+                                innovantes.
+                            </p>
+                            <p>
+                                J'aime créer des interfaces utilisateur intuitives et des backends 
+                                robustes, en utilisant les meilleures pratiques du développement web.
+                            </p>
+                        </div>
+                        <div class="about__stats">
+                            <div class="stat">
+                                <span class="stat__number">2+</span>
+                                <span class="stat__label">Années d'étude</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">10+</span>
+                                <span class="stat__label">Projets réalisés</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">5+</span>
+                                <span class="stat__label">Technologies maîtrisées</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Projets -->
+            <section id="projects" class="projects">
+                <div class="container">
+                    <h2 class="section__title">Mes Projets</h2>
+                    <div class="projects__grid">
+                        <article class="project-card">
+                            <div class="project-card__image">
+                                <div class="project-placeholder">🛒</div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Application Web E-commerce</h3>
+                                <p class="project-card__description">
+                                    Une plateforme e-commerce moderne développée avec React et Node.js
+                                </p>
+                                <div class="project-card__tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">Node.js</span>
+                                    <span class="tag">MongoDB</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="#" class="btn btn--small">Voir le code</a>
+                                    <a href="#" class="btn btn--small btn--outline">Démo live</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="project-card__image">
+                                <div class="project-placeholder">📊</div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Dashboard Analytics</h3>
+                                <p class="project-card__description">
+                                    Interface d'administration avec graphiques et données en temps réel
+                                </p>
+                                <div class="project-card__tags">
+                                    <span class="tag">Vue.js</span>
+                                    <span class="tag">Chart.js</span>
+                                    <span class="tag">PHP</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="#" class="btn btn--small">Voir le code</a>
+                                    <a href="#" class="btn btn--small btn--outline">Démo live</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="project-card__image">
+                                <div class="project-placeholder">🔗</div>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">API REST</h3>
+                                <p class="project-card__description">
+                                    API complète avec authentification et documentation automatique
+                                </p>
+                                <div class="project-card__tags">
+                                    <span class="tag">Express.js</span>
+                                    <span class="tag">JWT</span>
+                                    <span class="tag">Swagger</span>
+                                </div>
+                                <div class="project-card__actions">
+                                    <a href="#" class="btn btn--small">Voir le code</a>
+                                    <a href="#" class="btn btn--small btn--outline">Documentation</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Compétences -->
+            <section id="skills" class="skills">
+                <div class="container">
+                    <h2 class="section__title">Compétences</h2>
+                    <div class="skills__grid">
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Frontend</h3>
+                            <div class="skills__list">
+                                <div class="skill">
+                                    <span class="skill__name">HTML/CSS</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">JavaScript</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">TypeScript</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="80"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">React</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="75"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Backend</h3>
+                            <div class="skills__list">
+                                <div class="skill">
+                                    <span class="skill__name">Node.js</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="80"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">PHP</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="75"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">SQL</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">MongoDB</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="70"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="skill-category__title">Outils</h3>
+                            <div class="skills__list">
+                                <div class="skill">
+                                    <span class="skill__name">Git</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">Docker</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="65"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">VS Code</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill">
+                                    <span class="skill__name">Figma</span>
+                                    <div class="skill__bar">
+                                        <div class="skill__progress" data-progress="70"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Contact -->
+            <section id="contact" class="contact">
+                <div class="container">
+                    <h2 class="section__title">Contactez-moi</h2>
+                    <div class="contact__content">
+                        <div class="contact__info">
+                            <p class="contact__description">
+                                Vous avez un projet en tête ? N'hésitez pas à me contacter 
+                                pour en discuter !
+                            </p>
+                            <div class="contact__methods">
+                                <div class="contact__method">
+                                    <span class="contact__icon">📧</span>
+                                    <span>dylan.carion@email.com</span>
+                                </div>
+                                <div class="contact__method">
+                                    <span class="contact__icon">📱</span>
+                                    <span>+33 6 12 34 56 78</span>
+                                </div>
+                                <div class="contact__method">
+                                    <span class="contact__icon">📍</span>
+                                    <span>France</span>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="contact__form">
+                            <div class="form__group">
+                                <label for="name" class="form__label">Nom</label>
+                                <input type="text" id="name" name="name" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="email" class="form__label">Email</label>
+                                <input type="email" id="email" name="email" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="message" class="form__label">Message</label>
+                                <textarea id="message" name="message" class="form__textarea" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__info">
+                        <p>&copy; 2024 Dylan Carion. Tous droits réservés.</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://github.com/dylancarion" class="footer__link" aria-label="GitHub">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/dylancarion" class="footer__link" aria-label="LinkedIn">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:dylan.carion@email.com" class="footer__link" aria-label="Email">
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

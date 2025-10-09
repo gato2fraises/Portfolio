@@ -1,8 +1,6 @@
-/**
- * Configuration ESLint optimisée pour TypeScript
- * Règles adaptées au portfolio moderne
- */
 module.exports = {
+  // Configuration ESLint optimisée pour TypeScript
+  // Règles adaptées au portfolio moderne
   root: true,
   env: {
     browser: true,
@@ -11,8 +9,10 @@ module.exports = {
     jest: true
   },
   extends: [
-    'eslint:recommended'
+    'eslint:recommended',
+    '@typescript-eslint/recommended'
   ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
