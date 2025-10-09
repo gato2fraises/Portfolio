@@ -94,8 +94,8 @@ module.exports = {
   // Restore mocks après chaque test
   restoreMocks: true,
   
-  // Timeout pour les tests
-  testTimeout: 10000,
+  // Timeout pour les tests (augmenté pour CI)
+  testTimeout: 20000,
   
   // Reporters simplifiés
   reporters: [

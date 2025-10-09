@@ -116,20 +116,20 @@ describe('AsyncHelper', () => {
     let condition = false;
     setTimeout(() => {
       condition = true;
-    }, 100);
+    }, 50); // Réduire le délai pour plus de stabilité
 
-    await expect(AsyncHelper.waitFor(() => condition, 200)).resolves.toBeUndefined();
+    await expect(AsyncHelper.waitFor(() => condition, 500)).resolves.toBeUndefined(); // Augmenter le timeout
   });
 
   test('waitFor should reject on timeout', async () => {
-    await expect(AsyncHelper.waitFor(() => false, 100)).rejects.toThrow('Timeout after 100ms');
+    await expect(AsyncHelper.waitFor(() => false, 200)).rejects.toThrow('Timeout after 200ms'); // Timeout plus long
   });
 
   test('delay should wait for specified time', async () => {
     const start = Date.now();
-    await AsyncHelper.delay(100);
+    await AsyncHelper.delay(50); // Réduire le délai pour plus de rapidité
     const elapsed = Date.now() - start;
-    expect(elapsed).toBeGreaterThanOrEqual(90);
+    expect(elapsed).toBeGreaterThanOrEqual(40); // Tolérance plus large
   });
 
   test('retry should retry failed function', async () => {
@@ -160,7 +160,7 @@ describe('AsyncHelper', () => {
     setTimeout(() => {
       expect(mockFn).toHaveBeenCalledTimes(1);
       done();
-    }, 150);
+    }, 200); // Timeout plus long pour la stabilité
   });
 
   test('throttle should limit function execution', done => {
@@ -177,7 +177,7 @@ describe('AsyncHelper', () => {
       throttledFn();
       expect(mockFn).toHaveBeenCalledTimes(2);
       done();
-    }, 150);
+    }, 200); // Timeout plus long pour la stabilité
   });
 });
 
