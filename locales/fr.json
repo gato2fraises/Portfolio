@@ -1,0 +1,277 @@
+{
+  "meta": {
+    "language": "fr",
+    "languageName": "Français",
+    "flag": "🇫🇷",
+    "direction": "ltr",
+    "dateFormat": "DD/MM/YYYY",
+    "numberFormat": "fr-FR"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Attention",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "search": "Rechercher",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "home": "Accueil",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "about": "À propos"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "cv": "CV",
+    "projects": "Projets",
+    "research": "Recherche",
+    "game": "Jeu",
+    "login": "Connexion",
+    "backToPortfolio": "← Retour au portfolio",
+    "languageSwitch": "Changer de langue",
+    "currentLanguage": "Langue actuelle : Français"
+  },
+  "header": {
+    "title": "Dylan Carion",
+    "subtitle": "Portfolio Professionnel",
+    "searchPlaceholder": "Rechercher dans le portfolio...",
+    "searchButton": "Rechercher",
+    "logout": "Déconnexion",
+    "sloganTitle": "Développeur Web Junior - BTS SIO SLAM",
+    "sloganSubtitle": "Recherche active d'alternance en développement web - Disponible septembre 2025"
+  },
+  "home": {
+    "metaTitle": "Dylan Carion - Développeur Web Junior | Portfolio Professionnel",
+    "metaDescription": "Portfolio professionnel de Dylan Carion, développeur web junior en BTS SIO SLAM. Découvrez mes projets, compétences techniques et ma recherche d'alternance.",
+    "intro": {
+      "title": "Dylan Carion - Développeur Web Junior",
+      "description": "Étudiant en BTS SIO option SLAM, je recherche activement une <strong>alternance en développement web</strong> pour septembre 2025. Rigoureux, autonome et passionné par les technologies web modernes, j'apporte motivation et compétences techniques à votre équipe tout en continuant à apprendre et évoluer professionnellement."
+    },
+    "sections": {
+      "skills": {
+        "title": "Profil & Compétences Techniques",
+        "icon": "👨‍💻",
+        "description": "<strong>Technologies maîtrisées :</strong><br>• <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>• <strong>Backend :</strong> PHP, Python, bases de données MySQL<br>• <strong>Outils :</strong> Git/GitHub, VS Code, méthodes Agiles<br>• <strong>Compétences transversales :</strong> Autonomie, rigueur, travail d'équipe, gestion de projet, résolution de problèmes",
+        "button": "Consulter mon CV complet"
+      },
+      "portfolio": {
+        "title": "Réalisations & Portfolio",
+        "icon": "💼",
+        "description": "<strong>Portfolio de projets professionnels et académiques</strong><br>Collection complète de mes réalisations : développement de sites web responsives, applications interactives, projets collaboratifs. Chaque projet démontre ma progression technique, ma capacité d'adaptation et mon approche méthodologique du développement. Code structuré, documentation technique complète.",
+        "button": "Voir mes réalisations"
+      },
+      "research": {
+        "title": "Projet de Recherche Académique",
+        "icon": "📚",
+        "description": "<strong>Étude sociologique - Développement de compétences transversales</strong><br>Projet de recherche universitaire démontrant mes compétences en méthodologie, analyse critique et rédaction technique. Gestion complète de projet : planification, recherche documentaire, analyse de données, présentation professionnelle. Exemple concret de rigueur intellectuelle et capacité à traiter des sujets complexes.",
+        "skillsHighlight": "<strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • Analyse critique • Communication professionnelle",
+        "button": "Voir la méthodologie"
+      },
+      "internship": {
+        "title": "Recherche d'Alternance - Septembre 2025",
+        "icon": "🎯",
+        "description": "<strong>Objectif professionnel : Contrat d'alternance en développement web</strong><br><br>Étudiant sérieux et motivé, je recherche une entreprise pour un contrat d'alternance en développement web à partir de septembre 2025. Prêt à m'investir dans vos projets, j'apporte créativité, rigueur technique et passion pour l'innovation technologique. Disponible immédiatement pour entretiens.",
+        "buttons": {
+          "cv": "Consulter mon CV",
+          "projects": "Voir mes projets"
+        },
+        "status": {
+          "title": "Candidature active",
+          "subtitle": "Disponible pour entretien • Motivé • Prêt à contribuer"
+        }
+      }
+    }
+  },
+  "footer": {
+    "title": "Dylan Carion - Développeur Web Junior - BTS SIO SLAM",
+    "subtitle": "Recherche alternance développement web - Septembre 2025",
+    "description": "Portfolio professionnel - Candidature active",
+    "copyright": "© {year} Dylan Carion. Tous droits réservés."
+  },
+  "notifications": {
+    "languageChanged": "Langue changée en Français",
+    "redirecting": "Redirection vers {page}...",
+    "pageNotFound": "Aucune page trouvée pour votre recherche.",
+    "searchResults": "{count} résultat(s) trouvé(s)",
+    "connectionSuccess": "Connexion réussie !",
+    "connectionError": "Erreur de connexion",
+    "logoutSuccess": "Déconnexion réussie"
+  },
+  "logout": {
+    "loading": "Déconnexion...",
+    "title": "Déconnexion en cours",
+    "message": "Merci d'avoir consulté mon portfolio professionnel",
+    "progress": "Redirection en cours..."
+  },
+  "projects": {
+    "metaTitle": "Projets & Réalisations - Dylan Carion | Développeur Web Junior",
+    "title": "Portfolio de Projets",
+    "subtitle": "Découvrez mes réalisations techniques et projets de développement web",
+    "filters": {
+      "all": "Tous les projets",
+      "inProgress": "En développement",
+      "completed": "Terminés",
+      "planned": "À venir"
+    },
+    "stats": {
+      "activeProjects": "Projets Actifs",
+      "technologies": "Technologies",
+      "completedProjects": "Projets Terminés",
+      "developmentHours": "Heures de Développement"
+    },
+    "items": {
+      "portfolio": {
+        "title": "Portfolio Professionnel",
+        "description": "Site web personnel présentant mes compétences techniques et réalisations. Interface moderne avec design responsive, animations CSS et navigation intuitive. Développé pour démontrer mes capacités en développement frontend.",
+        "status": "Terminé",
+        "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive"],
+        "buttons": {
+          "view": "Voir le projet",
+          "code": "Code source"
+        }
+      },
+      "game": {
+        "title": "Jeu JavaScript - Project SIO",
+        "description": "Jeu interactif en cours de développement en JavaScript pur dans le cadre de mes études BTS SIO. Projet démontrant mes compétences en programmation JavaScript, logique de jeu, gestion d'événements et manipulation du DOM.",
+        "status": "En développement",
+        "technologies": ["JavaScript ES6+", "HTML5 Canvas", "CSS3", "Game Logic"],
+        "buttons": {
+          "demo": "Version Beta",
+          "github": "Code GitHub"
+        }
+      },
+      "website": {
+        "title": "Site Web Entreprise",
+        "description": "Site web professionnel pour entreprise en ligne. Focus sur l'optimisation SEO, performance et accessibilité. Utilisation de technologies modernes et bonnes pratiques de développement.",
+        "status": "Terminé",
+        "technologies": ["HTML5", "SASS", "JavaScript", "SEO"],
+        "buttons": {
+          "visit": "Voir le site",
+          "code": "Code source"
+        }
+      }
+    },
+    "emptyState": {
+      "icon": "📂",
+      "title": "Aucun projet dans cette catégorie",
+      "description": "Utilisez les filtres ci-dessus pour explorer mes différentes réalisations"
+    }
+  },
+  "cv": {
+    "metaTitle": "Dylan Carion - CV Professionnel | Développeur Web Junior",
+    "title": "Dylan Carion",
+    "subtitle": "Développeur Web Junior - BTS SIO SLAM",
+    "profile": {
+      "title": "Profil Professionnel",
+      "description": "Étudiant en BTS SIO option SLAM (Services Logiciels et Applications Métiers), spécialisé en développement web et programmation. Rigoureux, autonome et passionné par les technologies modernes, je recherche activement une alternance en développement web pour septembre 2025."
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "education": {
+      "title": "Formation",
+      "current": "BTS SIO SLAM - Services Informatiques aux Organisations",
+      "period": "2024 - 2026",
+      "institution": "Lycée Technique",
+      "description": "Spécialisation développement d'applications, programmation orientée objet, bases de données, gestion de projet"
+    },
+    "skills": {
+      "title": "Compétences Techniques",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Bases de données",
+      "tools": "Outils & Méthodes",
+      "languages": "Langues"
+    },
+    "experience": {
+      "title": "Expérience",
+      "internship": "Stage de découverte - Développement Web",
+      "period": "Été 2024",
+      "company": "Entreprise locale",
+      "tasks": "Développement de pages web, intégration HTML/CSS, initiation JavaScript"
+    },
+    "projects": {
+      "title": "Projets Académiques",
+      "portfolio": "Portfolio personnel responsive",
+      "game": "Mini-jeu JavaScript",
+      "research": "Projet de recherche sociologique"
+    },
+    "download": "Télécharger le CV PDF"
+  },
+  "research": {
+    "metaTitle": "Projet de Recherche - Dylan Carion | BTS SIO SLAM",
+    "title": "Projet de Recherche Académique",
+    "subtitle": "Analyse des Dynamiques Sectaires - Étude Sociologique",
+    "icon": "🔬",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Ce projet de recherche s'inscrit dans le cadre de mes études et démontre ma capacité à mener une analyse rigoureuse sur des sujets complexes."
+    },
+    "methodology": {
+      "title": "Méthodologie",
+      "approach": "Approche qualitative",
+      "sources": "Sources multiples",
+      "analysis": "Analyse critique"
+    },
+    "skills": {
+      "title": "Compétences Développées",
+      "research": "Recherche documentaire",
+      "analysis": "Analyse critique",
+      "writing": "Rédaction technique",
+      "presentation": "Présentation orale"
+    }
+  },
+  "game": {
+    "metaTitle": "Mini Jeu Plateforme - Dylan Carion",
+    "title": "🎮 Mini Jeu Plateforme ✨",
+    "subtitle": "Un petit jeu développé par Dylan Carion",
+    "stats": {
+      "score": "Score",
+      "attempt": "Essai",
+      "bestScore": "Meilleur Score",
+      "time": "Temps"
+    },
+    "controls": {
+      "title": "Contrôles",
+      "move": "Flèches : Déplacer",
+      "jump": "Espace : Sauter",
+      "restart": "R : Recommencer"
+    },
+    "messages": {
+      "start": "Appuyez sur ESPACE pour commencer !",
+      "gameOver": "Game Over ! Appuyez sur R pour recommencer",
+      "newRecord": "Nouveau record !",
+      "wellDone": "Bien joué !"
+    }
+  },
+  "login": {
+    "metaTitle": "Accès Portfolio - Dylan Carion",
+    "title": "Dylan Carion",
+    "subtitle": "Portfolio Professionnel",
+    "description": "Accès sécurisé pour les recruteurs et entreprises",
+    "form": {
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "remember": "Se souvenir de moi",
+      "login": "Se connecter",
+      "guest": "Accès invité"
+    },
+    "messages": {
+      "welcome": "Bienvenue sur mon portfolio professionnel",
+      "security": "Accès sécurisé pour une expérience personnalisée",
+      "contact": "Pour un accès complet, contactez-moi directement"
+    }
+  }
+}

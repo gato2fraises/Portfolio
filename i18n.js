@@ -1,218 +1,459 @@
-// Système de traduction multilingue FR/EN
 class LanguageManager {
     constructor() {
-        this.currentLanguage = localStorage.getItem('preferred-language') || 'fr';
-        this.translations = {
-            fr: {
-                // Header
-                "header.title": "Dylan Carion",
-                "header.subtitle": "Portfolio Professionnel",
-                "header.search.placeholder": "Rechercher...",
-                "header.search.button": "Rechercher",
-                "header.logout": "Déconnexion",
-                "header.slogan.title": "Développeur Web Junior - BTS SIO SLAM",
-                "header.slogan.subtitle": "Recherche active d'alternance en développement web - Disponible septembre 2025",
-
-                // Page d'accueil
-                "home.intro.title": "Dylan Carion - Développeur Web Junior",
-                "home.intro.description": "Étudiant en BTS SIO option SLAM, je recherche activement une <strong>alternance en développement web</strong> pour septembre 2025. Rigoureux, autonome et passionné par les technologies web modernes, j'apporte motivation et compétences techniques à votre équipe tout en continuant à apprendre et évoluer professionnellement.",
-
-                // Section CV
-                "home.cv.title": "Profil & Compétences Techniques",
-                "home.cv.description": "<strong>Technologies maîtrisées :</strong><br>• <strong>Frontend :</strong> HTML5, CSS3, JavaScript ES6+<br>• <strong>Backend :</strong> PHP, Python, bases de données MySQL<br>• <strong>Outils :</strong> Git/GitHub, VS Code, méthodes Agiles<br>• <strong>Compétences transversales :</strong> Autonomie, rigueur, travail d'équipe, gestion de projet, résolution de problèmes",
-                "home.cv.button": "Consulter mon CV complet",
-
-                // Section Portfolio
-                "home.portfolio.title": "Réalisations & Portfolio",
-                "home.portfolio.description": "<strong>Portfolio de projets professionnels et académiques</strong><br>Collection complète de mes réalisations : développement de sites web responsives, applications interactives, projets collaboratifs. Chaque projet démontre ma progression technique, ma capacité d'adaptation et mon approche méthodologique du développement. Code structuré, documentation technique complète.",
-                "home.portfolio.button": "Voir mes réalisations",
-
-                // Section Recherche
-                "home.research.title": "Projet de Recherche Académique",
-                "home.research.description": "<strong>Étude sociologique - Développement de compétences transversales</strong><br>Projet de recherche universitaire démontrant mes compétences en méthodologie, analyse critique et rédaction technique. Gestion complète de projet : planification, recherche documentaire, analyse de données, présentation professionnelle. Exemple concret de rigueur intellectuelle et capacité à traiter des sujets complexes.",
-                "home.research.skills": "<strong>Compétences développées :</strong> Gestion de projet • Recherche méthodologique • Analyse critique • Communication professionnelle",
-                "home.research.button": "Voir la méthodologie",
-
-                // Section Contact
-                "home.contact.title": "Recherche d'Alternance - Septembre 2025",
-                "home.contact.description": "<strong>Objectif professionnel : Contrat d'alternance en développement web</strong><br><br>Étudiant sérieux et motivé, je recherche une entreprise pour un contrat d'alternance en développement web à partir de septembre 2025. Prêt à m'investir dans vos projets, j'apporte créativité, rigueur technique et passion pour l'innovation technologique. Disponible immédiatement pour entretiens.",
-                "home.contact.cv.button": "Consulter mon CV",
-                "home.contact.projects.button": "Voir mes projets",
-                "home.contact.status.title": "Candidature active",
-                "home.contact.status.subtitle": "Disponible pour entretien • Motivé • Prêt à contribuer",
-
-                // Footer
-                "footer.title": "Dylan Carion - Développeur Web Junior - BTS SIO SLAM",
-                "footer.subtitle": "Recherche alternance développement web - Septembre 2025",
-                "footer.description": "Portfolio professionnel - Candidature active",
-
-                // Notifications
-                "notification.redirect": "Redirection vers",
-                "notification.not.found": "Aucune page trouvée.",
-                "logout.loading": "Déconnexion...",
-                "logout.title": "Déconnexion en cours",
-                "logout.message": "Merci d'avoir consulté mon portfolio professionnel"
-            },
-            en: {
-                // Header
-                "header.title": "Dylan Carion",
-                "header.subtitle": "Professional Portfolio",
-                "header.search.placeholder": "Search...",
-                "header.search.button": "Search",
-                "header.logout": "Logout",
-                "header.slogan.title": "Junior Web Developer - BTS SIO SLAM",
-                "header.slogan.subtitle": "Actively seeking web development internship - Available September 2025",
-
-                // Home page
-                "home.intro.title": "Dylan Carion - Junior Web Developer",
-                "home.intro.description": "BTS SIO SLAM student, actively seeking a <strong>web development internship</strong> for September 2025. Rigorous, autonomous and passionate about modern web technologies, I bring motivation and technical skills to your team while continuing to learn and grow professionally.",
-
-                // CV Section
-                "home.cv.title": "Profile & Technical Skills",
-                "home.cv.description": "<strong>Mastered Technologies:</strong><br>• <strong>Frontend:</strong> HTML5, CSS3, JavaScript ES6+<br>• <strong>Backend:</strong> PHP, Python, MySQL databases<br>• <strong>Tools:</strong> Git/GitHub, VS Code, Agile methods<br>• <strong>Soft Skills:</strong> Autonomy, rigor, teamwork, project management, problem solving",
-                "home.cv.button": "View my complete CV",
-
-                // Portfolio Section
-                "home.portfolio.title": "Achievements & Portfolio",
-                "home.portfolio.description": "<strong>Portfolio of professional and academic projects</strong><br>Complete collection of my achievements: responsive website development, interactive applications, collaborative projects. Each project demonstrates my technical progression, adaptability and methodological approach to development. Structured code, complete technical documentation.",
-                "home.portfolio.button": "View my projects",
-
-                // Research Section
-                "home.research.title": "Academic Research Project",
-                "home.research.description": "<strong>Sociological Study - Transversal Skills Development</strong><br>University research project demonstrating my skills in methodology, critical analysis and technical writing. Complete project management: planning, documentary research, data analysis, professional presentation. Concrete example of intellectual rigor and ability to handle complex subjects.",
-                "home.research.skills": "<strong>Skills developed:</strong> Project management • Methodological research • Critical analysis • Professional communication",
-                "home.research.button": "View methodology",
-
-                // Contact Section
-                "home.contact.title": "Seeking Internship - September 2025",
-                "home.contact.description": "<strong>Professional objective: Web development internship contract</strong><br><br>Serious and motivated student, I am looking for a company for a web development internship starting September 2025. Ready to invest in your projects, I bring creativity, technical rigor and passion for technological innovation. Immediately available for interviews.",
-                "home.contact.cv.button": "View my CV",
-                "home.contact.projects.button": "View my projects",
-                "home.contact.status.title": "Active application",
-                "home.contact.status.subtitle": "Available for interview • Motivated • Ready to contribute",
-
-                // Footer
-                "footer.title": "Dylan Carion - Junior Web Developer - BTS SIO SLAM",
-                "footer.subtitle": "Seeking web development internship - September 2025",
-                "footer.description": "Professional portfolio - Active application",
-
-                // Notifications
-                "notification.redirect": "Redirecting to",
-                "notification.not.found": "No page found.",
-                "logout.loading": "Logging out...",
-                "logout.title": "Logout in progress",
-                "logout.message": "Thank you for visiting my professional portfolio"
-            }
-        };
-        
+        this.currentLanguage = this.getStoredLanguage() || this.detectBrowserLanguage();
+        this.translations = {};
+        this.loadingPromise = null;
         this.init();
     }
 
-    init() {
-        this.createLanguageSelector();
-        this.applyLanguage(this.currentLanguage);
+    getStoredLanguage() {
+        return localStorage.getItem('portfolio_language');
+    }
+
+    detectBrowserLanguage() {
+        const browserLang = navigator.language || navigator.userLanguage;
+        return browserLang.startsWith('fr') ? 'fr' : 'en';
+    }
+
+    async init() {
+        try {
+            await this.loadTranslations();
+            this.createLanguageSelector();
+            this.applyTranslations();
+            this.updateUrl();
+        } catch (error) {
+            console.warn('Translation loading failed, using fallback:', error);
+            this.loadFallbackTranslations();
+            this.createLanguageSelector();
+            this.applyTranslations();
+            this.updateUrl();
+        }
+    }
+
+    async loadTranslations() {
+        if (this.loadingPromise) {
+            return this.loadingPromise;
+        }
+
+        this.loadingPromise = Promise.all([
+            this.loadLanguageFile('fr'),
+            this.loadLanguageFile('en')
+        ]);
+
+        const [frTranslations, enTranslations] = await this.loadingPromise;
+        
+        this.translations = {
+            fr: frTranslations,
+            en: enTranslations
+        };
+
+        return this.translations;
+    }
+
+    async loadLanguageFile(lang) {
+        try {
+            const response = await fetch(`./locales/${lang}.json`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.warn(`Failed to load ${lang} translations:`, error);
+            return this.getFallbackTranslations(lang);
+        }
+    }
+
+    loadFallbackTranslations() {
+        // Traductions de base intégrées en cas d'échec de chargement
+        this.translations = {
+            fr: this.getFallbackTranslations('fr'),
+            en: this.getFallbackTranslations('en')
+        };
+    }
+
+    getFallbackTranslations(lang) {
+        const fallback = {
+            fr: {
+                navigation: {
+                    home: 'Accueil',
+                    cv: 'CV',
+                    projects: 'Projets',
+                    research: 'Recherche',
+                    game: 'Jeu',
+                    login: 'Connexion'
+                },
+                header: {
+                    title: 'Dylan Carion',
+                    subtitle: 'Portfolio Professionnel'
+                },
+                home: {
+                    sections: {
+                        skills: { title: 'Profil & Compétences Techniques' },
+                        portfolio: { title: 'Réalisations & Portfolio' },
+                        research: { title: 'Projet de Recherche Académique' },
+                        internship: { title: 'Recherche de Stage - Septembre 2025' }
+                    }
+                }
+            },
+            en: {
+                navigation: {
+                    home: 'Home',
+                    cv: 'Resume',
+                    projects: 'Projects',
+                    research: 'Research',
+                    game: 'Game',
+                    login: 'Login'
+                },
+                header: {
+                    title: 'Dylan Carion',
+                    subtitle: 'Professional Portfolio'
+                },
+                home: {
+                    sections: {
+                        skills: { title: 'Profile & Technical Skills' },
+                        portfolio: { title: 'Achievements & Portfolio' },
+                        research: { title: 'Academic Research Project' },
+                        internship: { title: 'Seeking Internship - September 2025' }
+                    }
+                }
+            }
+        };
+
+        return fallback[lang] || fallback.en;
     }
 
     createLanguageSelector() {
-        // Créer le sélecteur de langue avec un seul bouton
-        const langSelector = document.createElement('div');
-        langSelector.className = 'language-selector';
+        const header = document.querySelector('header') || document.body;
         
-        const currentLangDisplay = this.currentLanguage === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN';
-        const nextLang = this.currentLanguage === 'fr' ? 'en' : 'fr';
-        
-        langSelector.innerHTML = `
-            <button class="lang-toggle-btn" data-lang="${nextLang}" title="Switch to ${nextLang.toUpperCase()}">
-                ${currentLangDisplay}
+        // Supprimer l'ancien sélecteur s'il existe
+        const existingSelector = document.querySelector('.language-selector');
+        if (existingSelector) {
+            existingSelector.remove();
+        }
+
+        const currentLangData = this.translations[this.currentLanguage]?.meta || {};
+        const flag = currentLangData.flag || (this.currentLanguage === 'fr' ? '🇫🇷' : '🇬🇧');
+
+        const selector = document.createElement('div');
+        selector.className = 'language-selector';
+        selector.innerHTML = `
+            <button class="language-toggle" aria-label="Changer de langue / Switch language" title="${this.getTranslation('navigation.languageSwitch') || 'Change language'}">
+                <span class="flag">${flag}</span>
+                <span class="lang-code">${this.currentLanguage.toUpperCase()}</span>
+                <span class="toggle-icon">⇄</span>
             </button>
         `;
 
-        // Ajouter l'événement
-        langSelector.addEventListener('click', (e) => {
-            if (e.target.classList.contains('lang-toggle-btn')) {
-                const newLang = e.target.dataset.lang;
-                this.switchLanguage(newLang);
-            }
+        // Ajouter les styles améliorés
+        this.addLanguageSelectorStyles();
+
+        selector.querySelector('.language-toggle').addEventListener('click', () => {
+            this.toggleLanguage();
         });
 
-        // Insérer dans le header approprié
-        const searchArea = document.querySelector('.search-area');
-        const headerLangContainer = document.querySelector('.header-lang-container');
-        
-        if (searchArea) {
-            // Page principale avec header complet
-            searchArea.insertBefore(langSelector, searchArea.firstChild);
-        } else if (headerLangContainer) {
-            // Pages secondaires avec header simple
-            headerLangContainer.appendChild(langSelector);
-            document.body.classList.add('has-simple-header');
-        }
+        header.appendChild(selector);
     }
 
-    switchLanguage(lang) {
-        if (lang === this.currentLanguage) return;
+    addLanguageSelectorStyles() {
+        if (document.querySelector('#language-selector-styles')) return;
+
+        const styles = document.createElement('style');
+        styles.id = 'language-selector-styles';
+        styles.textContent = `
+            .language-selector {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+
+            .language-toggle {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 30px;
+                padding: 10px 18px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(15px);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .language-toggle:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.4);
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .language-toggle:active {
+                transform: translateY(-1px) scale(1.02);
+            }
+
+            .language-toggle .flag {
+                font-size: 18px;
+                filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+            }
+
+            .language-toggle .lang-code {
+                font-weight: 700;
+                letter-spacing: 1.2px;
+                font-size: 13px;
+            }
+
+            .language-toggle .toggle-icon {
+                font-size: 16px;
+                opacity: 0.8;
+                transition: transform 0.3s ease;
+            }
+
+            .language-toggle:hover .toggle-icon {
+                transform: rotate(180deg);
+                opacity: 1;
+            }
+
+            @media (max-width: 768px) {
+                .language-selector {
+                    top: 15px;
+                    right: 15px;
+                }
+                
+                .language-toggle {
+                    padding: 8px 14px;
+                    font-size: 12px;
+                    gap: 8px;
+                }
+
+                .language-toggle .flag {
+                    font-size: 16px;
+                }
+
+                .language-toggle .toggle-icon {
+                    font-size: 14px;
+                }
+            }
+
+            /* Animation d'apparition */
+            @keyframes languageSelectorAppear {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px) scale(0.8);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .language-selector {
+                animation: languageSelectorAppear 0.5s ease-out;
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+
+    async toggleLanguage() {
+        const previousLanguage = this.currentLanguage;
+        this.currentLanguage = this.currentLanguage === 'fr' ? 'en' : 'fr';
+        localStorage.setItem('portfolio_language', this.currentLanguage);
         
-        this.currentLanguage = lang;
-        localStorage.setItem('preferred-language', lang);
+        // Animation de transition
+        const toggle = document.querySelector('.language-toggle');
+        if (toggle) {
+            toggle.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                toggle.style.transform = '';
+            }, 150);
+        }
+
+        // Mettre à jour le sélecteur
+        const flag = document.querySelector('.language-toggle .flag');
+        const code = document.querySelector('.language-toggle .lang-code');
         
-        // Mettre à jour le bouton
-        const toggleBtn = document.querySelector('.lang-toggle-btn');
-        if (toggleBtn) {
-            const currentLangDisplay = lang === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN';
-            const nextLang = lang === 'fr' ? 'en' : 'fr';
+        if (flag && code) {
+            const currentLangData = this.translations[this.currentLanguage]?.meta || {};
+            const newFlag = currentLangData.flag || (this.currentLanguage === 'fr' ? '🇫🇷' : '🇬🇧');
             
-            toggleBtn.textContent = currentLangDisplay;
-            toggleBtn.dataset.lang = nextLang;
-            toggleBtn.title = `Switch to ${nextLang.toUpperCase()}`;
+            flag.textContent = newFlag;
+            code.textContent = this.currentLanguage.toUpperCase();
         }
-        
-        this.applyLanguage(lang);
-        
-        // Notification de changement
-        this.showLanguageChangeNotification(lang);
+
+        try {
+            await this.applyTranslations();
+            this.updateUrl();
+            this.showNotification(this.getTranslation('notifications.languageChanged') || 'Language changed');
+        } catch (error) {
+            console.warn('Translation application failed:', error);
+            // Revenir à la langue précédente en cas d'erreur
+            this.currentLanguage = previousLanguage;
+            localStorage.setItem('portfolio_language', this.currentLanguage);
+        }
     }
 
-    applyLanguage(lang) {
-        const translations = this.translations[lang];
+    async applyTranslations() {
+        const elements = document.querySelectorAll('[data-i18n]');
         
-        // Appliquer toutes les traductions
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.dataset.i18n;
-            if (translations[key]) {
-                if (element.tagName === 'INPUT') {
-                    element.placeholder = translations[key];
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.getTranslation(key);
+            
+            if (translation) {
+                if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'search')) {
+                    element.placeholder = translation;
+                } else if (element.hasAttribute('title')) {
+                    element.title = translation;
                 } else {
-                    element.innerHTML = translations[key];
+                    element.innerHTML = translation;
                 }
             }
         });
 
-        // Mettre à jour l'attribut lang du document
-        document.documentElement.lang = lang;
+        // Mettre à jour le titre de la page
+        const currentPage = this.detectPageType();
+        const pageTitle = this.getPageTitle(currentPage);
+        if (pageTitle) {
+            document.title = pageTitle;
+        }
+
+        // Mettre à jour la direction du texte si nécessaire
+        const direction = this.translations[this.currentLanguage]?.meta?.direction || 'ltr';
+        document.documentElement.setAttribute('dir', direction);
     }
 
-    showLanguageChangeNotification(lang) {
-        const message = lang === 'fr' ? 'Langue changée en Français' : 'Language changed to English';
+    getTranslation(key) {
+        if (!key) return null;
+        
+        const keys = key.split('.');
+        let translation = this.translations[this.currentLanguage];
+        
+        for (const k of keys) {
+            if (translation && typeof translation === 'object' && translation[k] !== undefined) {
+                translation = translation[k];
+            } else {
+                // Fallback vers l'anglais si la traduction française n'existe pas
+                if (this.currentLanguage === 'fr') {
+                    let fallback = this.translations.en;
+                    for (const fk of keys) {
+                        if (fallback && typeof fallback === 'object' && fallback[fk] !== undefined) {
+                            fallback = fallback[fk];
+                        } else {
+                            return null;
+                        }
+                    }
+                    return fallback;
+                }
+                return null;
+            }
+        }
+        
+        return typeof translation === 'string' ? translation : null;
+    }
+
+    detectPageType() {
+        const path = window.location.pathname;
+        const page = path.split('/').pop() || 'index.html';
+        
+        if (page.includes('cv')) return 'cv';
+        if (page.includes('projet')) return 'projects';
+        if (page.includes('secte')) return 'research';
+        if (page.includes('easteregg')) return 'game';
+        if (page.includes('connection')) return 'login';
+        return 'home';
+    }
+
+    getPageTitle(pageType) {
+        const metaKey = `${pageType}.metaTitle`;
+        return this.getTranslation(metaKey) || this.getTranslation('header.title') || 'Dylan Carion - Portfolio';
+    }
+
+    updateUrl() {
+        const url = new URL(window.location);
+        url.searchParams.set('lang', this.currentLanguage);
+        window.history.replaceState({}, '', url);
+    }
+
+    showNotification(message) {
+        // Créer une notification discrète
         const notification = document.createElement('div');
-        notification.className = 'notification success';
+        notification.style.cssText = `
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            transform: translateX(300px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        `;
         notification.textContent = message;
+        
         document.body.appendChild(notification);
         
-        setTimeout(() => notification.remove(), 2000);
+        // Animation d'apparition
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Disparition automatique
+        setTimeout(() => {
+            notification.style.transform = 'translateX(300px)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 2000);
     }
 
-    // Méthode pour obtenir une traduction
-    t(key) {
-        return this.translations[this.currentLanguage][key] || key;
+    // Méthode utilitaire pour formater les dates selon la locale
+    formatDate(date, options = {}) {
+        const locale = this.translations[this.currentLanguage]?.meta?.dateFormat === 'DD/MM/YYYY' ? 'fr-FR' : 'en-US';
+        return new Intl.DateTimeFormat(locale, options).format(date);
+    }
+
+    // Méthode utilitaire pour formater les nombres selon la locale
+    formatNumber(number, options = {}) {
+        const locale = this.translations[this.currentLanguage]?.meta?.numberFormat || 'en-US';
+        return new Intl.NumberFormat(locale, options).format(number);
     }
 }
 
-// Initialiser le gestionnaire de langues
-let languageManager;
+// Initialisation automatique avec gestion d'erreur
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        window.languageManager = new LanguageManager();
+    } catch (error) {
+        console.error('Failed to initialize language manager:', error);
+        // Fallback basique sans traductions
+        document.title = 'Dylan Carion - Portfolio';
+    }
+});
 
-document.addEventListener('DOMContentLoaded', function() {
-    languageManager = new LanguageManager();
+// Gestion du changement de langue via URL
+window.addEventListener('popstate', () => {
+    if (window.languageManager) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        if (urlLang && ['fr', 'en'].includes(urlLang) && urlLang !== window.languageManager.currentLanguage) {
+            window.languageManager.currentLanguage = urlLang;
+            window.languageManager.applyTranslations();
+        }
+    }
 });
 
 // Export pour utilisation dans d'autres scripts
-window.LanguageManager = LanguageManager;
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = LanguageManager;
+}
